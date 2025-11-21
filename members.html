@@ -150,10 +150,26 @@
         /* 研究人员专用网格 - 一行一个 */
         .members-grid.researcher-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
+            grid-template-columns: 1fr auto auto 1fr; /* 左右空，中间两格 */
+            gap: 20px; /* 你可以改成 10 或 15，越小越紧 */
             padding: 0 20px;
+
+            justify-items: center;
+            justify-content: center;
         }
+
+        /* 第一行：把 A 和 B 放在中间两格（2、3 列）*/
+        .item.a { grid-column: 2; }
+        .item.b { grid-column: 3; }
+
+        /* 第二行：C 居中（跨 2-3 列） */
+        .item.c { grid-column: 2 / 4; }  /* 让 C 直接居中 */
+
+        /* 第三行：D 和 E 也放在中间两格 */
+        .item.d { grid-column: 2; }
+        .item.e { grid-column: 3; }
+
+
 
         /* 成员卡片 */
         .member-card {
@@ -851,6 +867,9 @@
             color: #666;
             line-height: 1.8;
             margin-top: 10px;
+            max-width: 420px;   /* 你想限制的最大宽度 */
+            word-break: break-word;  /* 避免长单词或英文撑开 */
+            text-align: center; /* 根据你的布局可选 */
         }
 
         /* 响应式设计 */
@@ -954,61 +973,70 @@
         <div id="researcher" class="tab-content active">
             <div class="tab-content-inner">
                 <div class="members-grid researcher-grid">
-                    <div class="member-card">
-                        <div class="member-avatar1">
-                            <span class="member-avatar-placeholder"></span>
-                        </div>
-                        <div class="member-info">
-                            <h3>彭志科</h3>
-                            <p class="member-email">z.peng@sjtu.edu.cn</p>
-                            <p class="member-bio">教授</p>
-                            <p class="member-bio">从事动力学分析与控制、设备智能诊断与运维、智能实验系统研发等研究</p>
-                            
-                        </div>
-                    </div>
-                    <div class="member-card">
-                        <div class="member-avatar2">
-                            <span class="member-avatar-placeholder"></span>
-                        </div>
-                        <div class="member-info">
-                            <h3>史熙</h3>
-                            <p class="member-email">xishi@sjtu.edu.cn</p>
-                            <p class="member-bio">教授</p>
-                            <p class="member-bio">从事工业大数据与智能运维、工业摩擦学、智慧电梯等研究</p>
+                    <div class="item a">
+                        <div class="member-card">
+                            <div class="member-avatar1">
+                                <span class="member-avatar-placeholder"></span>
+                            </div>
+                            <div class="member-info">
+                                <h3>彭志科</h3>
+                                <p class="member-email">z.peng@sjtu.edu.cn</p>
+                                <p class="member-bio">教授</p>
+                                <p class="member-bio">从事动力学分析与控制、设备智能诊断与运维、智能实验系统研发等研究</p>
+                                
+                            </div>
                         </div>
                     </div>
-                    <div class="empty-member"></div>
-                    <div class="member-card">
-                        <div class="member-avatar3">
-                            <span class="member-avatar-placeholder"></span>
-                        </div>
-                        <div class="member-info">
-                            <h3>胡松涛</h3>
-                            <p class="member-email">hsttaotao@sjtu.edu.cn</p>
-                            <p class="member-bio">副教授</p>
-                            <p class="member-bio">从事界面动力学实验方法与应用研究，研发了界面动力学自主进化实验技术，实现了面向多学科交叉应用场景的界面动力学分析与优化，负责团队日常管理</p>
-                        </div>
-                    </div>
-                    <div class="member-card">
-                        <div class="member-avatar4">
-                            <span class="member-avatar-placeholder"></span>
-                        </div>
-                        <div class="member-info">
-                            <h3>谢天</h3>
-                            <p class="member-email">tian_xie@sjtu.edu.cn</p>
-                            <p class="member-bio">工程师</p>
-                            <p class="member-bio">从事机电控制等研究，负责团队日常运营</p>
+                    <div class="item b">
+                        <div class="member-card">
+                            <div class="member-avatar2">
+                                <span class="member-avatar-placeholder"></span>
+                            </div>
+                            <div class="member-info">
+                                <h3>史熙</h3>
+                                <p class="member-email">xishi@sjtu.edu.cn</p>
+                                <p class="member-bio">教授</p>
+                                <p class="member-bio">从事工业大数据与智能运维、工业摩擦学、智慧电梯等研究</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="member-card">
-                        <div class="member-avatar39">
-                            <span class="member-avatar-placeholder"></span>
+                    <div class="item c">
+                        <div class="member-card">
+                            <div class="member-avatar3">
+                                <span class="member-avatar-placeholder"></span>
+                            </div>
+                            <div class="member-info">
+                                <h3>胡松涛</h3>
+                                <p class="member-email">hsttaotao@sjtu.edu.cn</p>
+                                <p class="member-bio">副教授</p>
+                                <p class="member-bio">从事界面动力学实验方法与应用研究，研发了界面动力学自主进化实验技术，实现了面向多学科交叉应用场景的界面动力学分析与优化，负责团队日常管理</p>
+                            </div>
                         </div>
-                        <div class="member-info">
-                            <h3>尤卫英</h3>
-                            <p class="member-email">youweiying@126.com</p>
-                            <p class="member-bio">财务专员</p>
-                            <p class="member-bio">负责团队日常财务</p>
+                    </div>
+                    <div class="item d">
+                        <div class="member-card">
+                            <div class="member-avatar4">
+                                <span class="member-avatar-placeholder"></span>
+                            </div>
+                            <div class="member-info">
+                                <h3>谢天</h3>
+                                <p class="member-email">tian_xie@sjtu.edu.cn</p>
+                                <p class="member-bio">工程师</p>
+                                <p class="member-bio">从事机电控制等研究，负责团队日常运营</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item e">
+                        <div class="member-card">
+                            <div class="member-avatar39">
+                                <span class="member-avatar-placeholder"></span>
+                            </div>
+                            <div class="member-info">
+                                <h3>尤卫英</h3>
+                                <p class="member-email">youweiying@126.com</p>
+                                <p class="member-bio">财务专员</p>
+                                <p class="member-bio">负责团队日常财务</p>
+                            </div>
                         </div>
                     </div>
                 </div>
