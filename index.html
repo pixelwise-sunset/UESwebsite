@@ -250,7 +250,7 @@
         }
 
         /* 左右箭头 */
-        .arrow {
+        /* .arrow {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
@@ -296,7 +296,7 @@
         .arrow-right::before {
             transform: rotate(45deg);
             margin-right: 5px;
-        }
+        } */
 
         /* 指示器 */
         .banner-indicators {
@@ -571,13 +571,14 @@
             }
         }
 
-        // === 视频播放完自动切换 ===
+       
+        // === 视频播放完自动重新播放 ===
         slides.forEach(slide => {
             const video = slide.querySelector('video');
             if (video) {
                 video.addEventListener('ended', () => {
-                    // 视频播放结束时，切到下一张
-                    changeSlide(1);
+                    video.currentTime = 0; // 回到开头
+                    video.play();          // 继续播放
                 });
             }
         });
