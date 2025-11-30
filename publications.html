@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>出版物列表</title>
+    <title>成果列表</title>
     <style>
         * {
             margin: 0;
@@ -16,7 +16,7 @@
             background-color: #f8f9fa;
         }
 
-        /* 出版物列表容器 */
+        /* 成果列表容器 */
         .publications-list-section {
             padding: 80px 50px;
             min-height: 600px;
@@ -99,7 +99,7 @@
             }
         }
 
-        /* 出版物列表 */
+        /* 成果列表 */
         .publications-list {
             max-width: 1200px;
             margin: 0 auto;
@@ -162,6 +162,91 @@
             color: #1976d2;
         }
 
+        /* 成果卡片样式 */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 两列 */
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .product-card {
+            display: flex;
+            flex-direction: column;
+            background: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 12px 16px;
+            text-align: center;
+        }
+
+        .product-info h3 {
+            font-size: 16px;
+            margin: 8px 0;
+        }
+
+        .product-year {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .product-gallery {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 420px;
+            background: #ffffff; /* 没图时白色背景 */
+            object-fit: contain; /* 按最长比例 */
+            border-radius: 8px;
+        }
+
+        .thumbnails {
+            display: flex;
+            gap: 6px;
+            overflow-x: auto; /* 图片多时可横向滑动 */
+            padding-bottom: 4px;
+        }
+
+        .thumbnails img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 6px;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+
+        .thumbnails img:hover {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        .thumbnails img.active {
+            opacity: 1;
+            border: 2px solid #007aff;
+        }
+
         /* 响应式设计 */
         @media (max-width: 768px) {
             .publications-list-section {
@@ -197,23 +282,25 @@
         }
     </style>
 </head>
+
 <body>
-    <!-- 出版物列表区域 -->
+    <!-- 成果列表区域 -->
     <section class="publications-list-section">
         <div class="publications-list-header">
-            <h2>出版物</h2>
+            <h2>成果</h2>
         </div>
 
         <!-- Tab 导航 -->
         <div class="tab-navigation">
             <button class="tab-btn active" onclick="switchTab('journal')">期刊论文</button>
             <button class="tab-btn" onclick="switchTab('conference')">会议论文</button>
+            <button class="tab-btn" onclick="switchTab('product')">产品</button>
         </div>
 
         <!-- 期刊论文 Tab -->
         <div id="journal" class="tab-content active">
             <div class="publications-list">
-            <!-- 出版物条目 1 -->
+            <!-- 成果条目 1 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Advanced Materials</span>
@@ -222,7 +309,7 @@
                 <h3>Self-evolving discovery of carrier biomaterials with ultra-low nonspecific protein adsorption for single cell analysis</h3>
             </div>
 
-            <!-- 出版物条目 2 -->
+            <!-- 成果条目 2 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Nano Energy</span>
@@ -231,7 +318,7 @@
                 <h3>Perception-regulation-integrated surfaces for tunable wettability at droplet impact</h3>
             </div>
 
-            <!-- 出版物条目 3 -->
+            <!-- 成果条目 3 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Physics of Fluids</span>
@@ -240,7 +327,7 @@
                 <h3>Lattice Boltzmann simulation of droplet dynamics in binder jet three-dimensional printing</h3>
             </div>
 
-            <!-- 出版物条目 4 -->
+            <!-- 成果条目 4 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Surface Topography: Metrology and Properties</span>
@@ -249,7 +336,7 @@
                 <h3>A review of stratified topography theory on interface mechanics</h3>
             </div>
 
-            <!-- 出版物条目 5 -->
+            <!-- 成果条目 5 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Advanced Functional Materials</span>
@@ -258,7 +345,7 @@
                 <h3>Triboelectric insoles with normal-shear plantar stress perception</h3>
             </div>
 
-            <!-- 出版物条目 6 -->
+            <!-- 成果条目 6 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Nano Energy</span>
@@ -267,7 +354,7 @@
                 <h3>Triboelectric decoupling measurement for droplet parameters in microfluidic chips</h3>
             </div>
 
-            <!-- 出版物条目 7 -->
+            <!-- 成果条目 7 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Nano Energy</span>
@@ -276,7 +363,7 @@
                 <h3>Triboelectrically self-sensing mechanical metamaterials for smart mechanical equipment</h3>
             </div>
 
-            <!-- 出版物条目 8 -->
+            <!-- 成果条目 8 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Nano Energy</span>
@@ -285,7 +372,7 @@
                 <h3>Triboelectrically self-sensing respiratory ventilator masks for monitoring, diagnosis, therapy, and human-machine interaction</h3>
             </div>
 
-            <!-- 出版物条目 9 -->
+            <!-- 成果条目 9 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Journal of Manufacturing Systems</span>
@@ -294,7 +381,7 @@
                 <h3>Modeling and scheduling a triply-constrained flow shop in biomanufacturing systems</h3>
             </div>
 
-            <!-- 出版物条目 10 -->
+            <!-- 成果条目 10 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Surface & Coatings Technology</span>
@@ -303,7 +390,7 @@
                 <h3>Integrated-circuit-like programmable superrepellent surfaces</h3>
             </div>
 
-            <!-- 出版物条目 11 -->
+            <!-- 成果条目 11 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Journal of the Brazilian Society of Mechanical Sciences and Engineering</span>
@@ -312,7 +399,7 @@
                 <h3>Numerical investigation of rope-core elasticity effects on rope-sheave traction</h3>
             </div>
 
-            <!-- 出版物条目 12 -->
+            <!-- 成果条目 12 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">实验力学</span>
@@ -321,7 +408,7 @@
                 <h3>基于深度学习的摩擦电法向切向载荷解耦测量方法</h3>
             </div>
 
-            <!-- 出版物条目 13 -->
+            <!-- 成果条目 13 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Nano Energy</span>
@@ -330,7 +417,7 @@
                 <h3>Model-driven triboelectric sensors for multidimensional tactile perception</h3>
             </div>
 
-            <!-- 出版物条目 14 -->
+            <!-- 成果条目 14 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Nano Energyy</span>
@@ -339,7 +426,7 @@
                 <h3>Misalignment fault identification of a multi-span rotor system enabled by triboelectric nanogenerators</h3>
             </div>
 
-            <!-- 出版物条目 15 -->
+            <!-- 成果条目 15 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Nano Energy</span>
@@ -348,7 +435,7 @@
                 <h3>Position sensing of jetting droplets enabled by triboelectric nanogenerators</h3>
             </div>
 
-            <!-- 出版物条目 16 -->
+            <!-- 成果条目 16 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Friction</span>
@@ -357,7 +444,7 @@
                 <h3>Rigid-flexible hybrid surfaces for water-repelling and abrasion-resisting</h3>
             </div>
 
-            <!-- 出版物条目 17 -->
+            <!-- 成果条目 17 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Measurement</span>
@@ -366,7 +453,7 @@
                 <h3>Health monitoring of triboelectric self-sensing bearings through deep learning</h3>
             </div>
 
-            <!-- 出版物条目 18 -->
+            <!-- 成果条目 18 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Surface Topography: Metrology and Properties</span>
@@ -375,7 +462,7 @@
                 <h3>Stratified topography theory to understand frictional electrification for sliding triboelectric nanogenerators</h3>
             </div>
 
-            <!-- 出版物条目 19 -->
+            <!-- 成果条目 19 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Mechanical Systems and Signal Processing</span>
@@ -384,7 +471,7 @@
                 <h3>Low-variance version of the RCC index and form factor index for machine condition monitoring</h3>
             </div>
 
-            <!-- 出版物条目 20 -->
+            <!-- 成果条目 20 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">机械设计与研究</span>
@@ -393,7 +480,7 @@
                 <h3>曳引电梯安全钳制动工况的参数化建模方法及实验验证</h3>
             </div>
 
-            <!-- 出版物条目 21 -->
+            <!-- 成果条目 21 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">机械设计与研究</span>
@@ -402,7 +489,7 @@
                 <h3>自动扶梯楼层板防滑性能现场评价方法研究及装置研制</h3>
             </div>
 
-            <!-- 出版物条目 22 -->
+            <!-- 成果条目 22 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Droplet</span>
@@ -411,7 +498,7 @@
                 <h3>Pneumatic programmable superrepellent surfaces</h3>
             </div>
 
-            <!-- 出版物条目 23 -->
+            <!-- 成果条目 23 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Measurement</span>
@@ -420,7 +507,7 @@
                 <h3>NTScatNet: An interpretable convolutional neural network for domain generalization diagnosis across different transmission paths</h3>
             </div>
 
-            <!-- 出版物条目 24 -->
+            <!-- 成果条目 24 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Chinese Journal of Mechanical Engineering</span>
@@ -429,7 +516,7 @@
                 <h3>Discriminative features of abnormities in a spiral groove gas face seal based on dynamic model considering contact</h3>
             </div>
 
-            <!-- 出版物条目 25 -->
+            <!-- 成果条目 25 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">ACS Applied Materials & Interfaces</span>
@@ -438,7 +525,7 @@
                 <h3>Biomimetic water-repelling surfaces with robustly flexible structures</h3>
             </div>
 
-            <!-- 出版物条目 26 -->
+            <!-- 成果条目 26 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">ACS Applied Materials & Interfaces</span>
@@ -447,7 +534,7 @@
                 <h3>Flexibility-patterned liquid-repelling surfaces</h3>
             </div>
 
-            <!-- 出版物条目 27 -->
+            <!-- 成果条目 27 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Journal of Colloid and Interface Science</span>
@@ -456,7 +543,7 @@
                 <h3>Effects of beverage carbonation on lubrication mechanisms and mouthfeel</h3>
             </div>
 
-            <!-- 出版物条目 28 -->
+            <!-- 成果条目 28 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Science Advances</span>
@@ -465,7 +552,7 @@
                 <h3>Liquid repellency enhancement through flexible microstructures</h3>
             </div>
 
-            <!-- 出版物条目 29 -->
+            <!-- 成果条目 29 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">ACS Applied Materials & Interfaces</span>
@@ -474,7 +561,7 @@
                 <h3>Self-compensating liquid-repellent surfaces with stratified morphology</h3>
             </div>
 
-            <!-- 出版物条目 30 -->
+            <!-- 成果条目 30 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Applied Surface Science</span>
@@ -483,7 +570,7 @@
                 <h3>Droplet manipulation of hierarchical steel surfaces using femtosecond laser fabrication</h3>
             </div>
 
-            <!-- 出版物条目 31 -->
+            <!-- 成果条目 31 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">ACS Applied Materials & Interfaces</span>
@@ -492,7 +579,7 @@
                 <h3>Laminar flow-based fiber fabrication and encoding via two-photon lithography</h3>
             </div>
 
-            <!-- 出版物条目 32 -->
+            <!-- 成果条目 32 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Tribology International</span>
@@ -501,7 +588,7 @@
                 <h3>Exploiting air cushion effects to optimise a superhydrophobic/hydrophilic patterned liquid ring sealed air bearing</h3>
             </div>
 
-            <!-- 出版物条目 33 -->
+            <!-- 成果条目 33 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Advances in Mechanical Engineering</span>
@@ -510,7 +597,7 @@
                 <h3>Gas face seal status estimation based on acoustic emission monitoring and support vector machine regression</h3>
             </div>
 
-            <!-- 出版物条目 34 -->
+            <!-- 成果条目 34 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">ACS Applied Materials & Interfaces</span>
@@ -519,7 +606,7 @@
                 <h3>Three-dimensional printed surfaces inspired by bi-Gaussian stratified plateaus</h3>
             </div>
 
-            <!-- 出版物条目 35 -->
+            <!-- 成果条目 35 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Tribology International</span>
@@ -528,7 +615,7 @@
                 <h3>Characterization and simulation of bi-Gaussian surfaces induced by material transfer and additive processes</h3>
             </div>
 
-            <!-- 出版物条目 36 -->
+            <!-- 成果条目 36 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Tribology International</span>
@@ -537,7 +624,7 @@
                 <h3>Bi-fractal feature of bi-Gaussian stratified surfaces</h3>
             </div>
 
-            <!-- 出版物条目 37 -->
+            <!-- 成果条目 37 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Tribology International</span>
@@ -546,7 +633,7 @@
                 <h3>Mechanism of bi-Gaussian surface topographies on generating acoustic emissions under a sliding friction</h3>
             </div>
 
-            <!-- 出版物条目 38 -->
+            <!-- 成果条目 38 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Surface & Coatings Technology</span>
@@ -555,7 +642,7 @@
                 <h3>Bi-Gaussian stratified theory to understand wettability on rough topographies</h3>
             </div>
 
-            <!-- 出版物条目 39 -->
+            <!-- 成果条目 39 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Langmuir</span>
@@ -564,7 +651,7 @@
                 <h3>Bi-Gaussian stratified wetting model on rough surfaces</h3>
             </div>
 
-            <!-- 出版物条目 40 -->
+            <!-- 成果条目 40 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">机械工程学报</span>
@@ -573,7 +660,7 @@
                 <h3>基于双高斯分层表面理论的机械密封研究综述</h3>
             </div>
 
-            <!-- 出版物条目 41 -->
+            <!-- 成果条目 41 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Tribology International</span>
@@ -582,7 +669,7 @@
                 <h3>Evolution of bi-Gaussian surface parameters and sealing performance for a gas face seal under a low-speed condition</h3>
             </div>
 
-            <!-- 出版物条目 42 -->
+            <!-- 成果条目 42 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Tribology International</span>
@@ -591,7 +678,7 @@
                 <h3>Bi-Gaussian stratified effect of rough surfaces on acoustic emission under a dry sliding friction</h3>
             </div>
 
-            <!-- 出版物条目 43 -->
+            <!-- 成果条目 43 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Tribology Letters</span>
@@ -600,7 +687,7 @@
                 <h3>Multi-Gaussian stratified modeling and characterization of multi-process surfaces</h3>
             </div>
 
-            <!-- 出版物条目 44 -->
+            <!-- 成果条目 44 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Chinese Journal of Mechanical Engineering</span>
@@ -609,7 +696,7 @@
                 <h3>Application of fractal contact model in dynamic performance analysis of gas face seals</h3>
             </div>
 
-            <!-- 出版物条目 45 -->
+            <!-- 成果条目 45 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Industrial Lubrication and Tribology</span>
@@ -618,7 +705,7 @@
                 <h3>A closed-form contact model for gas face seals during the opened operation</h3>
             </div>
 
-            <!-- 出版物条目 46 -->
+            <!-- 成果条目 46 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Tribology Letters</span>
@@ -627,7 +714,7 @@
                 <h3>Analysis of the dynamic friction of a gas face seal based on acoustic emissions</h3>
             </div>
 
-            <!-- 出版物条目 47 -->
+            <!-- 成果条目 47 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Tribology International</span>
@@ -636,7 +723,7 @@
                 <h3>The bi-Gaussian theory to understand sliding wear and friction</h3>
             </div>
 
-            <!-- 出版物条目 48 -->
+            <!-- 成果条目 48 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Tribology International</span>
@@ -645,7 +732,7 @@
                 <h3>Evolution of bi-Gaussian surface parameters of silicon-carbide and carbon-graphite discs in a dry sliding wear process</h3>
             </div>
 
-            <!-- 出版物条目 49 -->
+            <!-- 成果条目 49 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Tribology International</span>
@@ -654,7 +741,7 @@
                 <h3>Bi-Gaussian surface identification and reconstruction with revised autocorrelation functions</h3>
             </div>
 
-            <!-- 出版物条目 50 -->
+            <!-- 成果条目 50 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Tribology International</span>
@@ -663,7 +750,7 @@
                 <h3>Probe model of wear degree under sliding wear by Rk parameter set</h3>
             </div>
 
-            <!-- 出版物条目 51 -->
+            <!-- 成果条目 51 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Friction</span>
@@ -672,7 +759,7 @@
                 <h3>Truncated separation method for characterizing and reconstructing bi-Gaussian stratified surfaces</h3>
             </div>
 
-            <!-- 出版物条目 52 -->
+            <!-- 成果条目 52 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Journal of Tribology-Transactions of the ASME</span>
@@ -681,7 +768,7 @@
                 <h3>Stratified revised asperity contact model for worn surfaces</h3>
             </div>
 
-            <!-- 出版物条目 53 -->
+            <!-- 成果条目 53 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Journal of Vibroengineering</span>
@@ -690,7 +777,7 @@
                 <h3>Stability and tracking analysis of gas face seals under low-parameter conditions considering slip flow</h3>
             </div>
 
-            <!-- 出版物条目 54 -->
+            <!-- 成果条目 54 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Scientific Reports</span>
@@ -699,7 +786,7 @@
                 <h3>High response speed microfluidic ice valves with enhanced thermal conductivity and a movable refrigeration source</h3>
             </div>
 
-            <!-- 出版物条目 55 -->
+            <!-- 成果条目 55 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Surface & Coatings Technology</span>
@@ -708,7 +795,7 @@
                 <h3>Controllable bidirectional wettability transition of impregnated graphite by laser treatment and transition mechanism analysis</h3>
             </div>
 
-            <!-- 出版物条目 56 -->
+            <!-- 成果条目 56 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Industrial lubrication and tribology</span>
@@ -717,7 +804,7 @@
                 <h3>Investigation of slip/no-slip surface for two-dimensional large tilting pad thrust bearing</h3>
             </div>
 
-            <!-- 出版物条目 57 -->
+            <!-- 成果条目 57 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">机械工程学报</span>
@@ -726,7 +813,7 @@
                 <h3>螺旋槽干气密封稳态特性分析模型的对比研究</h3>
             </div>
 
-            <!-- 出版物条目 58 -->
+            <!-- 成果条目 58 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">流体机械</span>
@@ -735,7 +822,7 @@
                 <h3>螺旋槽干气密封压差扰动下的瞬态特性研究</h3>
             </div>
 
-            <!-- 出版物条目 59 -->
+            <!-- 成果条目 59 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">机械工程学报</span>
@@ -744,7 +831,7 @@
                 <h3>基于本征正交分解方法的螺旋槽干气密封瞬态响应分析</h3>
             </div>
 
-            <!-- 出版物条目 60 -->
+            <!-- 成果条目 60 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">流体机械</span>
@@ -753,7 +840,7 @@
                 <h3>外加压静压型机械密封均压槽设计对动态性能的影响</h3>
             </div>
 
-            <!-- 出版物条目 61 -->
+            <!-- 成果条目 61 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Tribology International</span>
@@ -762,7 +849,7 @@
                 <h3>Continuous separating method for characterizing and reconstructing bi-Gaussian stratified surfaces</h3>
             </div>
 
-            <!-- 出版物条目 62 -->
+            <!-- 成果条目 62 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Tribology International</span>
@@ -771,7 +858,7 @@
                 <h3>Stratified effect of continuous bi-Gaussian rough surface on lubrication and asperity contact</h3>
             </div>
 
-            <!-- 出版物条目 63 -->
+            <!-- 成果条目 63 -->
             <div class="publication-item">
                 <div class="publication-meta">
                     <span class="publication-journal">Chinese Journal of Mechanical Engineering</span>
@@ -830,6 +917,116 @@
                 </div>
             </div>
         </div>
+
+        <!-- 产品 Tab -->
+        <div id="product" class="tab-content">
+            <div class="products-grid">
+                <!-- 产品卡片 -->
+                <div class="product-card">
+                    <div class="product-gallery">
+                        <img src="/Users/march/Desktop/靖宝/UES-website/images/achievement/white.png" class="main-image">
+                    </div>
+                    <div class="thumbnails">
+                        <img src="/Users/march/Desktop/靖宝/UES-website/images/achievement/white.png" class="thumbnail">
+                    </div>
+                    <div class="product-info">
+                        <h3>力学材料设计自进化平台v1-敬待发布</h3>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-gallery">
+                        <img src="/Users/march/Desktop/靖宝/UES-website/images/achievement/图2-1.png" class="main-image">
+                        <div class="thumbnails">
+                            <img src="/Users/march/Desktop/靖宝/UES-website/images/achievement/图2-1.png">
+                            <img src="/Users/march/Desktop/靖宝/UES-website/images/achievement/图2-2.png">
+                            <img src="/Users/march/Desktop/靖宝/UES-website/images/achievement/图2-3.png">
+                            <img src="/Users/march/Desktop/靖宝/UES-website/images/achievement/图2-4.png">
+                            <img src="/Users/march/Desktop/靖宝/UES-website/images/achievement/图2-5.png">
+                            <img src="/Users/march/Desktop/靖宝/UES-website/images/achievement/图2-6.png">
+                            <img src="/Users/march/Desktop/靖宝/UES-website/images/achievement/图2-7.png">
+                            <img src="/Users/march/Desktop/靖宝/UES-website/images/achievement/图2-8.png">
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>力感器件</h3>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-gallery">
+                        <img src="/Users/march/Desktop/靖宝/UES-website/images/achievement/white.png" class="main-image">
+                    </div>
+                    <div class="thumbnails">
+                        <img src="/Users/march/Desktop/靖宝/UES-website/images/achievement/white.png" class="thumbnail">
+                    </div>
+                    <div class="product-info">
+                        <h3>喷墨砂型工艺优化自进化平台v1-敬待发布</h3>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-gallery">
+                        <img src="/Users/march/Desktop/靖宝/UES-website/images/achievement/图4-1.png" class="main-image">
+                    </div>
+                    <div class="thumbnails">
+                        <img src="/Users/march/Desktop/靖宝/UES-website/images/achievement/图4-1.png" class="thumbnail">
+                    </div>
+                    <div class="product-info">
+                        <h3>凝胶筛选自进化工作站v1</h3>
+                        <h3>v2v3-敬待发布</h3>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-gallery">
+                        <img src="/Users/march/Desktop/靖宝/UES-website/images/achievement/图5-1.png" class="main-image">
+                    </div>
+                    <div class="thumbnails">
+                        <img src="/Users/march/Desktop/靖宝/UES-website/images/achievement/图5-1.png" class="thumbnail">
+                    </div>
+                    <div class="product-info">
+                        <h3>细胞成像仪v3</h3>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-gallery">
+                        <img src="/Users/march/Desktop/靖宝/UES-website/images/achievement/white.png" class="main-image">
+                    </div>
+                    <div class="thumbnails">
+                        <img src="/Users/march/Desktop/靖宝/UES-website/images/achievement/white.png" class="thumbnail">
+                    </div>
+                    <div class="product-info">
+                        <h3>细胞筛选仪v1-敬待发布</h3>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-gallery">
+                        <img src="/Users/march/Desktop/靖宝/UES-website/images/achievement/图7-1.png" class="main-image">
+                    </div>
+                    <div class="thumbnails">
+                        <img src="/Users/march/Desktop/靖宝/UES-website/images/achievement/图7-1.png" class="thumbnail">
+                    </div>
+                    <div class="product-info">
+                        <h3>蛋白质纯化前处理工作站v1</h3>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-gallery">
+                        <img src="/Users/march/Desktop/靖宝/UES-website/images/achievement/white.png" class="main-image">
+                    </div>
+                    <div class="thumbnails">
+                        <img src="/Users/march/Desktop/靖宝/UES-website/images/achievement/white.png" class="thumbnail">
+                    </div>
+                    <div class="product-info">
+                        <h3>蛋白质设计自进化平台v1-敬待发布</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <script>
@@ -846,7 +1043,27 @@
             document.getElementById(tabId).classList.add('active');
             event.target.classList.add('active');
         }
+        document.querySelectorAll('.product-card').forEach(card => {
+            const mainImg = card.querySelector('.main-image');
+            const thumbs = card.querySelectorAll('.thumbnails img');
+
+            // 如果缩略图只有 1 张且为占位图 → 不设 active
+            if (thumbs.length === 1 && thumbs[0].src.includes("white.png")) {
+                return;
+            }
+
+            thumbs.forEach(thumb => {
+                thumb.addEventListener('click', () => {
+                    mainImg.src = thumb.src;
+                    thumbs.forEach(t => t.classList.remove('active'));
+                    thumb.classList.add('active');
+                });
+            });
+
+            if (thumbs.length > 0) thumbs[0].classList.add('active');
+        });
+
     </script>
+
 </body>
 </html>
-
