@@ -158,9 +158,6 @@
             justify-content: center;
         }
 
-        /* 第一行：把 A 和 B 放在中间两格（2、3 列）*/
-        .item.a { grid-column: 2; }
-        .item.b { grid-column: 3; }
 
         /* 第二行：C 居中（跨 2-3 列） */
         .item.c { grid-column: 2 / 4; }  /* 让 C 直接居中 */
@@ -964,42 +961,15 @@
         <div class="tab-navigation">
             <button class="tab-btn active" onclick="switchTab('researcher')">研究人员</button>
             <button class="tab-btn" onclick="switchTab('guest')">客座人员</button>
-            <button class="tab-btn" onclick="switchTab('graduate')">研究生</button>
-            <button class="tab-btn" onclick="switchTab('joint-graduate')">联培研究生</button>
-            <button class="tab-btn" onclick="switchTab('alumni')">毕业生</button>
+            <!-- <button class="tab-btn" onclick="switchTab('graduate')">研究生</button>
+            <button class="tab-btn" onclick="switchTab('joint-graduate')">联培研究生</button> -->
+            <button class="tab-btn" onclick="switchTab('alumni')">毕业人员</button>
         </div>
 
         <!-- Tab 内容 -->
         <div id="researcher" class="tab-content active">
             <div class="tab-content-inner">
                 <div class="members-grid researcher-grid">
-                    <div class="item a">
-                        <div class="member-card">
-                            <div class="member-avatar1">
-                                <span class="member-avatar-placeholder"></span>
-                            </div>
-                            <div class="member-info">
-                                <h3>彭志科</h3>
-                                <p class="member-email">z.peng@sjtu.edu.cn</p>
-                                <p class="member-bio">教授</p>
-                                <p class="member-bio">从事动力学分析与控制、设备诊断与运维、实验系统研发等研究</p>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item b">
-                        <div class="member-card">
-                            <div class="member-avatar2">
-                                <span class="member-avatar-placeholder"></span>
-                            </div>
-                            <div class="member-info">
-                                <h3>史熙</h3>
-                                <p class="member-email">xishi@sjtu.edu.cn</p>
-                                <p class="member-bio">教授</p>
-                                <p class="member-bio">从事工业大数据与智能运维、工业摩擦学、智慧电梯等研究</p>
-                            </div>
-                        </div>
-                    </div>
                     <div class="item c">
                         <div class="member-card">
                             <div class="member-avatar3">
@@ -1037,6 +1007,7 @@
                                 <p class="member-bio">财务专员</p>
                                 <p class="member-bio">负责团队日常财务</p>
                             </div>
+                            <div class="divider"></div>
                         </div>
                     </div>
                 </div>
