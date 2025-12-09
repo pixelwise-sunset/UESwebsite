@@ -114,37 +114,22 @@
             padding: 0 20px;
         }
 
-        /* 你也可以使用以下方式让它成为透明的，占据空间，但不可见 */
         .empty-member {
-            visibility: hidden; /* 占位符不可见，但仍然占据空间 */
+            visibility: hidden;
         }
 
-        /* 研究生成员网格 - 调整间距 */
-
-        .members-grid.graduate-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            padding: 0 20px;
-        }
-
-        /* .members-grid.graduate-grid > *:nth-child(7), .members-grid.graduate-grid > *:nth-child(8), .members-grid.graduate-grid > *:nth-child(9) {
-            margin-top: 120px;
-        } */
         .divider {
-            grid-column: 1 / -1;  /* 横跨整行 */
+            grid-column: 1 / -1;
             height: 1px;
             background-color: #ccc;
-            margin: 20px 0;       /* 上下间距 */
+            margin: 20px 0;
+            grid-auto-rows: auto;
+            display: block;
         }
 
-
-        /* 联培研究生成员网格 - 调整间距 */
-        .members-grid.dual-graduate-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            padding: 0 20px;
+        .members-grid.researcher-grid > .divider {
+            grid-column: 1 / -1;
+            width: 100%;
         }
 
         /* 研究人员专用网格 - 一行一个 */
@@ -157,7 +142,6 @@
             justify-items: center;
             justify-content: center;
         }
-
 
         /* 第二行：C 居中（跨 2-3 列） */
         .item.c { grid-column: 2 / 4; }  /* 让 C 直接居中 */
@@ -179,656 +163,20 @@
             transform: translateY(-5px);
         }
 
-        /* 研究人员卡片 - 横向布局 */
-        .researcher-grid .member-card {
-            background-color: transparent;
-            text-align: center;
-            transition: all 0.3s;
-        }
-
-        .researcher-grid .member-card:hover {
-            transform: translateY(-5px);
-        }
-
         /* 头像容器 */
-
         .member-avatar {
             width: 200px;
             height: 200px;
             margin: 0 auto 35px;
             border-radius: 50%;
             overflow: hidden;
-            background-image: url('images/members/qqq.jpg');
+            background-image: var(--img);
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-        .member-avatar1 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/pengzhike.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar2 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/shixi.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .member-avatar3 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/husongtao.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-
-        .member-avatar4 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/xietian.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar39 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/youweiying.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar5 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/Daniele Dini.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar6 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/Andrew deMello.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar7 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/caoxiaobao.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar8 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/gongzhuocheng.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar9 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/sunxiaoguang.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar10 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/yanjiusheng/丁玺佳.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar11 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/yanjiusheng/卢文辉.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar12 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/yanjiusheng/李浩然.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar13 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/yanjiusheng/曹睿.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar14 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/yanjiusheng/张现桐.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar15 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/yanjiusheng/王子芃.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .member-avatar16 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/yanjiusheng/陈学坤.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar17 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/yanjiusheng/谢天.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-
-
-        .member-avatar18 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/yanjiusheng/邓银军.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar19 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/yanjiusheng/周嘉仪.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar20 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/yanjiusheng/陈靖雯.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar21 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/yanjiusheng/郝帅.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar22 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/yanjiusheng/Ignatius Albert.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar40 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/yanjiusheng/陈诗雨.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar38 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/yanjiusheng/涂雨萱.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar23 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/lianpei/陈万钧.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar24 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/lianpei/于海生.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar25 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/lianpei/汤铠铭.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar26 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/lianpei/郭保潞.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar27 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/lianpei/闫澳生.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar28 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/lianpei/王世成.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar29 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/lianpei/苗雨露.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar30 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/lianpei/陈建东.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar31 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/lianpei/印镇岳.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar32 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/lianpei/谢传宝.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar33 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/biyesheng/许又中.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar34 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/biyesheng/杨帅.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar35 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/biyesheng/闫波.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar36 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/Tom Reddyhoff.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .member-avatar37 {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 35px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-image: url('images/members/xiayanming.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-
-
-        /* 研究人员头像 - 正方形 */
-        .researcher-grid .member-avatar {
-            width: 180px;
-            height: 180px;
-            margin: 0 30px 0 0;
-            border-radius: 8px;
-            flex-shrink: 0;
-        }
-
-        .member-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* 头像占位符（不再需要显示，但保留以防需要） */
-        .member-avatar-placeholder {
-            display: none;
         }
 
         /* 成员信息容器 */
@@ -844,12 +192,6 @@
             color: #333;
             margin-bottom: 20px;
             font-weight: 600;
-        }
-
-        /* 研究人员姓名 */
-        .researcher-grid .member-card h3 {
-            font-size: 24px;
-            margin-bottom: 12px;
         }
 
         .member-card .member-email {
@@ -961,8 +303,6 @@
         <div class="tab-navigation">
             <button class="tab-btn active" onclick="switchTab('researcher')">研究人员</button>
             <button class="tab-btn" onclick="switchTab('guest')">客座人员</button>
-            <!-- <button class="tab-btn" onclick="switchTab('graduate')">研究生</button>
-            <button class="tab-btn" onclick="switchTab('joint-graduate')">联培研究生</button> -->
             <button class="tab-btn" onclick="switchTab('alumni')">毕业人员</button>
         </div>
 
@@ -972,22 +312,19 @@
                 <div class="members-grid researcher-grid">
                     <div class="item c">
                         <div class="member-card">
-                            <div class="member-avatar3">
-                                <span class="member-avatar-placeholder"></span>
-                            </div>
-                            <div class="member-info">
-                                <h3>胡松涛</h3>
-                                <p class="member-email">hsttaotao@sjtu.edu.cn</p>
-                                <p class="member-bio">副教授</p>
-                                <p class="member-bio">从事界面动力学实验方法与应用研究，研发了界面动力学自主进化实验技术，实现了面向多学科交叉应用场景的界面动力学分析与优化，负责团队日常管理</p>
-                            </div>
+                            <div class="member-avatar" style="--img:url('images/members/husongtao.png')"></div>
+                                <div class="member-info">
+                                    <h3>胡松涛</h3>
+                                    <p class="member-email">hsttaotao@sjtu.edu.cn</p>
+                                    <p class="member-bio">副教授</p>
+                                    <p class="member-bio">从事界面动力学实验方法与应用研究，研发了界面动力学自主进化实验技术，实现了面向多学科交叉应用场景的界面动力学分析与优化，负责团队日常管理</p>
+                                </div>
                         </div>
                     </div>
+                    <div class="divider"></div>
                     <div class="item d">
                         <div class="member-card">
-                            <div class="member-avatar4">
-                                <span class="member-avatar-placeholder"></span>
-                            </div>
+                            <div class="member-avatar" style="--img:url('images/members/xietian.jpg')"></div>
                             <div class="member-info">
                                 <h3>谢天</h3>
                                 <p class="member-email">tian_xie@sjtu.edu.cn</p>
@@ -998,295 +335,233 @@
                     </div>
                     <div class="item e">
                         <div class="member-card">
-                            <div class="member-avatar39">
-                                <span class="member-avatar-placeholder"></span>
-                            </div>
+                            <div class="member-avatar" style="--img:url('images/members/youweiying.jpg')"></div>
                             <div class="member-info">
                                 <h3>尤卫英</h3>
                                 <p class="member-email">youweiying@126.com</p>
                                 <p class="member-bio">财务专员</p>
                                 <p class="member-bio">负责团队日常财务</p>
                             </div>
-                            <div class="divider"></div>
                         </div>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="members-grid">
+                    <div class="member-card">
+                        <div class="member-avatar" style="--img:url('images/members/yanjiusheng/丁玺佳.jpg')"></div>
+                        <h3>丁玺佳</h3>
+                        <p class="member-email">2021硕2023博</p>
+                        <p class="member-email">上海交通大学</p>
+                        <p class="member-email">蛋白纯化自动化装备</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar" style="--img:url('images/members/lianpei/陈万钧.jpg')"></div>
+                        <h3>陈万钧</h3>
+                        <p class="member-email">2022普博</p>
+                        <p class="member-email">广州国家实验室</p>
+                        <p class="member-email">空间多组学技术与装备</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar" style="--img:url('images/members/yanjiusheng/卢文辉.jpg')"></div>
+                        <h3>卢文辉</h3>
+                        <p class="member-email">2022直博</p>
+                        <p class="member-email">上海交通大学</p>
+                        <p class="member-email">细胞科学实验自进化技术与装备</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar" style="--img:url('images/members/yanjiusheng/李浩然.jpg')"></div>
+                        <h3>李浩然</h3>
+                        <p class="member-email">2022硕2024博</p>
+                        <p class="member-email">上海交通大学</p>
+                        <p class="member-email">点阵材料自进化实验</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar" style="--img:url('images/members/yanjiusheng/曹睿.jpg')"></div>
+                        <h3>曹睿</h3>
+                        <p class="member-email">2022硕2024博</p>
+                        <p class="member-email">上海交通大学</p>
+                        <p class="member-email">高速电梯导向系统动力学</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar" style="--img:url('images/members/yanjiusheng/张现桐.jpg')"></div>
+                        <h3>张现桐</h3>
+                        <p class="member-email">2023直博</p>
+                        <p class="member-email">上海交通大学</p>
+                        <p class="member-email">先进增材制造 智能实验系统</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar" style="--img:url('images/members/lianpei/于海升.png')"></div>
+                        <h3>于海升</h3>
+                        <p class="member-email">2023直博</p>
+                        <p class="member-email">广州国家实验室</p>
+                        <p class="member-email">智能实验室</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar" style="--img:url('images/members/yanjiusheng/王子芃.jpg')"></div>
+                        <h3>王子芃</h3>
+                        <p class="member-email">2024直博</p>
+                        <p class="member-email">上海交通大学</p>
+                        <p class="member-email">面向细胞筛选材料创制</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="member-card">
+                        <div class="member-avatar" style="--img:url('images/members/yanjiusheng/谢天.jpg')"></div>
+                        <h3>谢天</h3>
+                        <p class="member-email">2023硕</p>
+                        <p class="member-email">上海交通大学</p>
+                        <p class="member-email">电梯制动系统性能退化参数现场检测与评价技术研究</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar" style="--img:url('images/members/lianpei/汤铠铭.jpg')"></div>
+                        <h3>汤铠铭</h3>
+                        <p class="member-email">2023硕</p>
+                        <p class="member-email">宁夏大学</p>
+                        <p class="member-email">多相流的润湿与渗流</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar" style="--img:url('images/members/lianpei/郭保潞.jpg')"></div>
+                        <h3>郭保潞</h3>
+                        <p class="member-email">2023硕</p>
+                        <p class="member-email">宁夏大学</p>
+                        <p class="member-email">精密仪器及智能系统</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar" style="--img:url('images/members/yanjiusheng/邓银军.jpg')"></div>
+                        <h3>邓银军</h3>
+                        <p class="member-email">2024硕</p>
+                        <p class="member-email">上海交通大学</p>
+                        <p class="member-email">细胞智能检测与筛选</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar" style="--img:url('images/members/yanjiusheng/周嘉仪.jpg')"></div>
+                        <h3>周嘉仪</h3>
+                        <p class="member-email">2024硕</p>
+                        <p class="member-email">上海交通大学</p>
+                        <p class="member-email">力感器件</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar" style="--img:url('images/members/lianpei/闫澳生.jpg')"></div>
+                        <h3>闫澳生</h3>
+                        <p class="member-email">2024硕</p>
+                        <p class="member-email">宁夏大学</p>
+                        <p class="member-email">数字孪生</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar" style="--img:url('images/members/lianpei/王世成.jpg')"></div>
+                        <h3>王世成</h3>
+                        <p class="member-email">2024硕</p>
+                        <p class="member-email">宁夏大学</p>
+                        <p class="member-email">数字孪生</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar" style="--img:url('images/members/lianpei/苗雨露.jpg')"></div>
+                        <h3>苗雨露</h3>
+                        <p class="member-email">2024硕</p>
+                        <p class="member-email">宁夏大学</p>
+                        <p class="member-email">摩擦电气泡检测</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar" style="--img:url('images/members/yanjiusheng/陈靖雯.jpg')"></div>
+                        <h3>陈靖雯</h3>
+                        <p class="member-email">2025硕</p>
+                        <p class="member-email">上海交通大学</p>
+                        <p class="member-email">基于振动的异常检测</p>
+                    </div>
+                     <div class="member-card">
+                        <div class="member-avatar" style="--img:url('images/members/yanjiusheng/郝帅.jpg')"></div>
+                        <h3>郝帅</h3>
+                        <p class="member-email">2025硕</p>
+                        <p class="member-email">上海交通大学</p>
+                        <p class="member-email">微流控mems传感器</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar" style="--img:url('images/members/yanjiusheng/Ignatius Albert.jpg')"></div>
+                        <h3>Ignatius Albert</h3>
+                        <p class="member-email">2025硕</p>
+                        <p class="member-email">上海交通大学</p>
+                        <p class="member-email">自动化实验设备及系统研究</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar" style="--img:url('images/members/lianpei/陈建东.jpg')"></div>
+                        <h3>陈建东</h3>
+                        <p class="member-email">2025硕</p>
+                        <p class="member-email">宁夏大学</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar" style="--img:url('images/members/lianpei/印镇岳.jpg')"></div>
+                        <h3>印镇岳</h3>
+                        <p class="member-email">2025硕</p>
+                        <p class="member-email">宁夏大学</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar" style="--img:url('images/members/lianpei/谢传宝.jpg')"></div>
+                        <h3>谢传宝</h3>
+                        <p class="member-email">2025硕</p>
+                        <p class="member-email">宁夏大学</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar" style="--img:url('images/members/yanjiusheng/陈诗雨.jpg')"></div>
+                        <h3>陈诗雨</h3>
+                        <p class="member-email">2026硕</p>
+                        <p class="member-email">上海交通大学</p>
+                        <p class="member-email">无人实验</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar" style="--img:url('images/members/yanjiusheng/涂雨萱.jpg')"></div>
+                        <h3>涂雨萱</h3>
+                        <p class="member-email">2026硕</p>
+                        <p class="member-email">上海交通大学</p>
+                        <p class="member-email">无人实验</p>
                     </div>
                 </div>
             </div>
         </div>
-
         <div id="guest" class="tab-content">
             <div class="tab-content-inner">
                 <div class="members-grid">
                     <div class="member-card">
-                        <div class="member-avatar5">
-                            <span class="member-avatar-placeholder"></span>
-                        </div>
+                        <div class="member-avatar" style="--img:url('images/members/Daniele Dini.jpg')"></div>
                         <h3>Daniele Dini</h3>
                         <p class="member-email">d.dini@imperial.ac.uk</p>
                         <p class="member-bio">伦敦帝国理工学院</p>
                     </div>
                     <div class="member-card">
-                        <div class="member-avatar6">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
+                        <div class="member-avatar" style="--img:url('images/members/Andrew deMello.png')"></div>
                         <h3>Andrew deMello</h3>
                         <p class="member-email">andrew.demello@chem.ethz.ch</p>
                         <p class="member-bio">苏黎世联邦理工学院</p>
                     </div>
                     <div class="member-card">
-                        <div class="member-avatar36">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
+                        <div class="member-avatar" style="--img:url('images/members/Tom Reddyhoff.jpg')"></div>
                         <h3>Tom Reddyhoff</h3>
                         <p class="member-email">t.reddyhoff@imperial.ac.uk</p>
                         <p class="member-bio">伦敦帝国理工学院</p>
                     </div>
                     <div class="member-card">
-                        <div class="member-avatar7">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
+                        <div class="member-avatar" style="--img:url('images/members/caoxiaobao.jpg')"></div>
                         <h3>曹小宝</h3>
                         <p class="member-email">cao_xiaobao@gzlab.ac.cn</p>
                         <p class="member-bio">广州国家实验室</p>
                     </div>  
                     <div class="member-card">
-                        <div class="member-avatar37">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
+                        <div class="member-avatar" style="--img:url('images/members/xiayanming.jpg')"></div>
                         <h3>夏雁鸣</h3>
                         <p class="member-email">xia_yanming@gzlab.ac.cn</p>
                         <p class="member-bio">广州国家实验室</p>
                     </div> 
                     <div class="member-card">
-                        <div class="member-avatar8">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
+                        <div class="member-avatar" style="--img:url('images/members/gongzhuocheng.jpg')"></div>
                         <h3>巩卓成</h3>
                         <p class="member-email">gong_zhuocheng@gzlab.ac.cn</p>
                         <p class="member-bio">广州国家实验室</p>
                     </div>  
                     <div class="member-card">
-                        <div class="member-avatar9">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
+                        <div class="member-avatar" style="--img:url('images/members/sunxiaoguang.jpg')"></div>
                         <h3>孙小光</h3>
                         <p class="member-email">xgsun@jnu.edu.cn</p>
                         <p class="member-bio">暨南大学</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="graduate" class="tab-content">
-            <div class="tab-content-inner">
-                <div class="members-grid graduate-grid">
-                    <div class="member-card">
-                        <div class="member-avatar10">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
-                        <h3>丁玺佳</h3>
-                        <p class="member-email">2021硕2023博</p>
-                        <p class="member-email">蛋白纯化自动化装备</p>
-                    </div>
-                    <div class="member-card">
-                        <div class="member-avatar11">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
-                        <h3>卢文辉</h3>
-                        <p class="member-email">2022直博</p>
-                        <p class="member-email">细胞科学实验自进化技术与装备</p>
-                    </div>
-                    <div class="member-card">
-                        <div class="member-avatar12">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
-                        <h3>李浩然</h3>
-                        <p class="member-email">2022硕2024博</p>
-                        <p class="member-email">点阵材料自进化实验</p>
-                    </div>
-                    <div class="member-card">
-                        <div class="member-avatar13">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
-                        <h3>曹睿</h3>
-                        <p class="member-email">2022硕2024博</p>
-                        <p class="member-email">高速电梯导向系统动力学</p>
-                    </div>
-                    <div class="member-card">
-                        <div class="member-avatar14">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
-                        <h3>张现桐</h3>
-                        <p class="member-email">2023直博</p>
-                        <p class="member-email">先进增材制造 智能实验系统</p>
-                    </div>
-                    <div class="member-card">
-                        <div class="member-avatar15">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
-                        <h3>王子芃</h3>
-                        <p class="member-email">2024直博</p>
-                        <p class="member-email">面向细胞筛选材料创制</p>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="member-card">
-                        <div class="member-avatar17">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
-                        <h3>谢天</h3>
-                        <p class="member-email">2023硕</p>
-                        <p class="member-email">电梯制动系统性能退化参数现场检测与评价技术研究</p>
-                    </div>
-                    <div class="member-card">
-                        <div class="member-avatar18">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
-                        <h3>邓银军</h3>
-                        <p class="member-email">2024硕</p>
-                        <p class="member-email">细胞智能检测与筛选</p>
-                    </div>
-                    <div class="member-card">
-                        <div class="member-avatar19">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
-                        <h3>周嘉仪</h3>
-                        <p class="member-email">2024硕</p>
-                        <p class="member-email">力感器件</p>
-                    </div>
-                    <div class="member-card">
-                        <div class="member-avatar20">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
-                        <h3>陈靖雯</h3>
-                        <p class="member-email">2025硕</p>
-                        <p class="member-email">基于振动的异常检测</p>
-                    </div>
-                     <div class="member-card">
-                        <div class="member-avatar21">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
-                        <h3>郝帅</h3>
-                        <p class="member-email">2025硕</p>
-                        <p class="member-email">微流控mems传感器</p>
-                    </div>
-                    <div class="member-card">
-                        <div class="member-avatar22">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
-                        <h3>Ignatius Albert</h3>
-                        <p class="member-email">2025硕</p>
-                        <p class="member-email">自动化实验设备及系统研究</p>
-                    </div>
-                    <div class="member-card">
-                        <div class="member-avatar40">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
-                        <h3>陈诗雨</h3>
-                        <p class="member-email">2026硕</p>
-                        <p class="member-email">无人实验</p>
-                    </div>
-                     <div class="member-card">
-                        <div class="member-avatar38">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
-                        <h3>涂雨萱</h3>
-                        <p class="member-email">2026硕</p>
-                        <p class="member-email">无人实验</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="joint-graduate" class="tab-content">
-            <div class="tab-content-inner">
-                <div class="members-grid dual-graduate-grid">
-                    <div class="member-card">
-                        <div class="member-avatar23">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
-                        <h3>陈万钧</h3>
-                        <p class="member-email">广州国家实验室</p>
-                        <p class="member-email">2022普博</p>
-                        <p class="member-email">空间多组学技术与装备</p>
-                    </div>
-                    <div class="member-card">
-                        <div class="member-avatar24">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
-                        <h3>于海生</h3>
-                        <p class="member-email">广州国家实验室</p>
-                        <p class="member-email">2023直博</p>
-                        <p class="member-email">智能实验室</p>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="member-card">
-                        <div class="member-avatar25">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
-                        <h3>汤凯铭</h3>
-                        <p class="member-email">宁夏大学</p>
-                        <p class="member-email">2023硕</p>
-                        <p class="member-email">多相流的润湿与渗流</p>
-                    </div>
-                    <div class="member-card">
-                        <div class="member-avatar26">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
-                        <h3>郭保潞</h3>
-                        <p class="member-email">宁夏大学</p>
-                        <p class="member-email">2023硕</p>
-                        <p class="member-email">精密仪器及智能系统</p>
-                    </div>
-                    <div class="member-card">
-                        <div class="member-avatar27">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
-                        <h3>闫澳生</h3>
-                        <p class="member-email">宁夏大学</p>
-                        <p class="member-email">2024硕</p>
-                        <p class="member-email">数字孪生</p>
-                    </div>
-                    <div class="member-card">
-                        <div class="member-avatar28">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
-                        <h3>王世成</h3>
-                        <p class="member-email">宁夏大学</p>
-                        <p class="member-email">2024硕</p>
-                        <p class="member-email">数字孪生</p>
-                    </div>
-                    <div class="member-card">
-                        <div class="member-avatar29">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
-                        <h3>苗雨露</h3>
-                        <p class="member-email">宁夏大学</p>
-                        <p class="member-email">2024硕</p>
-                        <p class="member-email">摩擦电气泡检测</p>
-                    </div>
-                    <div class="member-card">
-                        <div class="member-avatar30">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
-                        <h3>陈建东</h3>
-                        <p class="member-email">宁夏大学</p>
-                        <p class="member-email">2025硕</p>
-                    </div>
-                    <div class="member-card">
-                        <div class="member-avatar31">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
-                        <h3>印镇岳</h3>
-                        <p class="member-email">宁夏大学</p>
-                        <p class="member-email">2025硕</p>
-                    </div>
-                    <div class="member-card">
-                        <div class="member-avatar32">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
-                        <h3>谢传宝</h3>
-                        <p class="member-email">宁夏大学</p>
-                        <p class="member-email">2025硕</p>
                     </div>
                 </div>
             </div>
@@ -1296,9 +571,7 @@
             <div class="tab-content-inner">
                 <div class="members-grid">
                     <div class="member-card">
-                        <div class="member-avatar33">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
+                        <div class="member-avatar" style="--img:url('images/members/biyesheng/许又中.jpg')"></div>
                         <h3>许又中</h3>
                         <p class="member-email">上海交通大学</p>
                         <p class="member-email">2022硕</p>
@@ -1306,9 +579,7 @@
                     </div>
 
                     <div class="member-card">
-                        <div class="member-avatar34">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
+                        <div class="member-avatar" style="--img:url('images/members/biyesheng/杨帅.png')"></div>
                         <h3>杨帅</h3>
                         <p class="member-email">宁夏大学</p>
                         <p class="member-email">2022硕</p>
@@ -1316,9 +587,7 @@
                     </div>
 
                     <div class="member-card">
-                        <div class="member-avatar35">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
+                        <div class="member-avatar" style="--img:url('images/members/biyesheng/闫波.jpg')"></div>
                         <h3>闫波</h3>
                         <p class="member-email">宁夏大学</p>
                         <p class="member-email">2022硕</p>
@@ -1326,9 +595,7 @@
                     </div>
 
                     <div class="member-card">
-                        <div class="member-avatar16">
-                            <span class="member-avatar-placeholder">孙</span>
-                        </div>
+                        <div class="member-avatar" style="--img:url('images/members/yanjiusheng/陈学坤.jpg')"></div>
                         <h3>陈学坤</h3>
                         <p class="member-email">上海交通大学</p>
                         <p class="member-email">2023硕</p>
