@@ -421,15 +421,7 @@
     <script>
         // Banner 逻辑
         const bannerContainer = document.querySelector('.banner-container');
-        document.addEventListener("click", function(event) {
-            if (!bannerContainer.contains(event.target)) {
-                bannerContainer.classList.add("small");
-            }
-        });
-        bannerContainer.addEventListener("click", function(event) {
-            event.stopPropagation();
-            this.classList.remove("small");
-        });
+        bannerContainer.classList.add("small");
 
         // 视频自动播放逻辑
         const video = document.querySelector('.banner-slide video');

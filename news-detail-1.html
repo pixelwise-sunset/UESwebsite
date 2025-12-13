@@ -565,16 +565,7 @@
 
         // 鼠标悬停控制 (保持 Banner 缩小逻辑)
         const bannerContainer = document.querySelector('.banner-container');
-        document.addEventListener("click", function(event) {
-            if (!bannerContainer.contains(event.target)) {
-                bannerContainer.classList.add("small");
-            }
-        });
-
-        bannerContainer.addEventListener("click", function(event) {
-            event.stopPropagation(); 
-            this.classList.remove("small");
-        });
+        bannerContainer.classList.add("small");
     </script>
 </body>
 </html>
