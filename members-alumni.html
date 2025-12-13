@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>团队成员 - 毕业人员</title>
+    <style>
+        /* 公共样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        /* 头部样式 */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            height: 80px;
+            width: auto;
+            display: block;
+        }
+
+        /* 导航菜单 */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #666;
+            font-size: 25px;
+            font-weight: 500;
+            transition: color 0.3s;
+            letter-spacing: 0.5px;
+            display: block;
+            padding: 10px 0;
+        }
+
+        nav ul li a:hover {
+            color: #0066cc;
+        }
+
+        /* 轮播图容器 */
+        .banner-container {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            overflow: hidden;
+            transition: height 0.8s ease;
+        }
+
+        .banner-container.small {
+            height: 300px;
+        }
+
+        .banner-slider {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .banner-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+        }
+
+        .banner-slide.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .banner-slide video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 成员区域 */
+        .members-section {
+            background-color: #f8f9fa;
+            padding: 80px 50px;
+            min-height: 600px;
+        }
+
+        .members-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .members-header h2 {
+            font-size: 42px;
+            font-weight: 300;
+            color: #333;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        /* Tab 导航 */
+        .tab-navigation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+            margin-bottom: 50px;
+        }
+
+        .tab-btn {
+            padding: 10px 40px;
+            background-color: transparent;
+            border: none;
+            color: #666;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .tab-btn:hover {
+            color: #1976d2;
+        }
+
+        .tab-btn.active {
+            color: #1976d2;
+            font-weight: 600;
+        }
+
+        .tab-btn:not(:last-child)::after {
+            content: '|';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #1976d2;
+            font-size: 20px;
+            font-weight: 300;
+        }
+
+        /* Tab 内容 */
+        .tab-content-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 0;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 成员网格 */
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            padding: 0 20px;
+        }
+
+        /* 成员卡片 */
+        .member-card {
+            background-color: transparent;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* 头像容器 */
+        .member-avatar {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 35px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-image: var(--img);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 成员信息容器 */
+        .member-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .member-card h3 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .member-card .member-email {
+            font-size: 14px;
+            color: #666;
+            word-break: break-all;
+        }
+
+        /* 底部样式 */
+        .site-footer {
+            background-color: #1e1e1e;
+            color: #ccc;
+            text-align: center;
+            padding: 20px 10px;
+            font-size: 14px;
+            line-height: 1.6;
+            border-top: 1px solid #333;
+        }
+
+        .footer-content a {
+            color: #9ad0ff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-content a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .banner-container {
+                height: 400px;
+            }
+            .members-section {
+                padding: 50px 20px;
+            }
+            .members-header h2 {
+                font-size: 28px;
+                letter-spacing: 3px;
+            }
+            .tab-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            .tab-btn:not(:last-child)::after {
+                font-size: 16px;
+            }
+            .tab-content-inner {
+                padding: 25px 0;
+            }
+            .members-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .member-avatar {
+                width: 150px;
+                height: 150px;
+            }
+        }
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .members-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="UES Logo" class="logo-img">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="news-list.html">新闻</a></li>
+                <li><a href="research-test.html">研究</a></li>
+                <li><a href="members-researchers.html" style="color: #0066cc;">成员</a></li>
+                <li><a href="publications-journals.html">成果</a></li>
+                <li><a href="gallery-research-images.html">媒体库</a></li>
+                <li><a href="contact-us.html">联系我们</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 轮播图区域 -->
+    <div class="banner-container">
+        <div class="banner-slider">
+            <div class="banner-slide active">
+                <video src="images/video11.mp4" muted autoplay playsinline></video>
+            </div>
+        </div>
+    </div>
+
+    <!-- 成员区域 -->
+    <section class="members-section">
+        <div class="members-header">
+            <h2>团队成员</h2>
+        </div>
+
+        <!-- Tab 导航 -->
+        <div class="tab-navigation">
+            <a href="members-researchers.html" class="tab-btn">研究人员</a>
+            <a href="members-guests.html" class="tab-btn">客座人员</a>
+            <a href="members-alumni.html" class="tab-btn active">毕业人员</a>
+        </div>
+
+        <!-- Tab 内容: 毕业人员 -->
+        <div class="tab-content-inner">
+            <div class="members-grid">
+                <div class="member-card">
+                    <div class="member-avatar" style="--img:url('images/members/biyesheng/许又中.jpg')"></div>
+                    <h3>许又中</h3>
+                    <p class="member-email">上海交通大学</p>
+                    <p class="member-email">2022硕</p>
+                    <p class="member-email">阿里达摩院就业</p>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-avatar" style="--img:url('images/members/biyesheng/杨帅.png')"></div>
+                    <h3>杨帅</h3>
+                    <p class="member-email">宁夏大学</p>
+                    <p class="member-email">2022硕</p>
+                    <p class="member-email">国科大北京纳米所读博</p>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-avatar" style="--img:url('images/members/biyesheng/闫波.jpg')"></div>
+                    <h3>闫波</h3>
+                    <p class="member-email">宁夏大学</p>
+                    <p class="member-email">2022硕</p>
+                    <p class="member-email">甘肃特检院就业</p>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-avatar" style="--img:url('images/members/yanjiusheng/陈学坤.jpg')"></div>
+                    <h3>陈学坤</h3>
+                    <p class="member-email">上海交通大学</p>
+                    <p class="member-email">2023硕</p>
+                    <p class="member-email">拓竹科技就业</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 网页底部 -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>© 2025 UES Group | All Rights Reserved</p>
+            <p>
+                <a href="https://beian.miit.gov.cn/" target="_blank">
+                    沪交ICP备20250301
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Banner 逻辑
+        const bannerContainer = document.querySelector('.banner-container');
+        document.addEventListener("click", function(event) {
+            if (!bannerContainer.contains(event.target)) {
+                bannerContainer.classList.add("small");
+            }
+        });
+        bannerContainer.addEventListener("click", function(event) {
+            event.stopPropagation();
+            this.classList.remove("small");
+        });
+
+        // 视频自动播放逻辑
+        const video = document.querySelector('.banner-slide video');
+        if (video) {
+            video.addEventListener('ended', () => {
+                video.currentTime = 0;
+                video.play();
+            });
+            video.play().catch(e => console.log(e));
+        }
+    </script>
+</body>
+</html>

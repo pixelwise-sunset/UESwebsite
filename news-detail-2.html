@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automated colony-picking instrument based on AI-driven image identification获评国际会议最佳学生论文奖 - 无人实验系统研发团队</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* 头部样式 */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;    /* 垂直居中对齐图片和文字 */
+            gap: 15px;              /* 图片与文字之间的间距 */
+        }
+
+        .logo-img {
+            height: 80px;           /* 图片高度 */
+            width: auto;            /* 保持宽高比例 */
+            display: block;
+        }
+
+        .logo-text {
+            font-size: 32px;
+            font-weight: 300;
+            color: #000000;
+            display: flex;
+            flex-direction: column; /* 使文字部分垂直排列 */
+            justify-content: center; /* 垂直居中 */
+            align-items: center;     /* 水平居中，使两行文本在中轴线对齐 */
+            text-align: center;      /* 文本居中 */
+        }
+
+        .logo-text strong {
+            font-weight: 600;       /* 加粗 */
+        }
+
+        /* 导航菜单 */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #666;
+            font-size: 25px;
+            font-weight: 500;
+            transition: color 0.3s;
+            letter-spacing: 0.5px;
+            display: block;
+            padding: 10px 0;
+        }
+
+        nav ul li a:hover {
+            color: #0066cc;
+        }
+
+        /* 二级菜单 */
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #1976d2;
+            min-width: 130px;
+            padding: 15px 0;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+            transform: translateY(10px);
+            z-index: 1001;
+            margin-top: 5px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .submenu::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 20px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 8px solid #1976d2;
+        }
+
+        nav ul li:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .submenu li {
+            margin: 0;
+            padding: 0;
+            display: block;
+            width: 100%;
+        }
+
+        .submenu li a {
+            color: white;
+            padding: 10px 25px;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            transition: background-color 0.3s;
+            display: block;
+            width: 100%;
+        }
+
+        .submenu li a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        /* 轮播图容器 */
+        .banner-container {
+            position: relative;
+            width: 100%;
+            height: 70vh; /* 初始高 */
+            overflow: hidden;
+            transition: height 0.8s ease; /* 动画过渡 */
+        }
+
+        .banner-container.small {
+            height: 300px; /* 缩小后高度 */
+        }
+
+
+        .banner-slider {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .banner-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+        }
+
+        .banner-slide.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .banner-slide.slide-up-exit {
+            animation: slideUpExit 0.8s ease-in-out forwards;
+        }
+
+        .banner-slide.slide-up-enter {
+            animation: slideUpEnter 0.8s ease-in-out forwards;
+        }
+
+        @keyframes slideUpExit {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(-100%);
+            }
+        }
+
+        @keyframes slideUpEnter {
+            from {
+                opacity: 0;
+                transform: translateY(100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .banner-slide img,
+        .banner-slide video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 轮播图文字 */
+        .banner-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 10;
+            width: 80%;
+        }
+
+        .banner-text h1 {
+            font-size: 130px;
+            font-weight: 300;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: 8px;
+        }
+
+        .banner-text p {
+            font-size: 38px;
+            font-weight: 300;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: 2px;
+        }
+
+        /* 指示器 */
+        .banner-indicators {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 100;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            border: 2px solid white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .indicator.active {
+            background-color: white;
+        }
+
+        /* 内容容器 */
+        #content-container {
+            width: 100%;
+            min-height: 900px;
+            position: relative;
+        }
+
+        /* === 移植自 latest-news.html 的样式 === */
+        /* Latest News 区域 */
+        .latest-news-section {
+            position: relative;
+            min-height: 900px;
+            padding: 80px 50px 100px;
+            background-image: url('images/bg.avif');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .latest-news-header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .latest-news-header h2 {
+            font-size: 42px;
+            font-weight: 300;
+            color: #333;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        /* 新闻详情页 */
+        .news-detail {
+            display: block; /* 默认显示 */
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            margin-bottom: 30px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s;
+            text-decoration: none; /* 链接样式 */
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+        .back-button::before {
+            content: '←';
+            font-size: 20px;
+        }
+
+        .news-detail-image {
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .news-detail-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .news-detail-content {
+            padding: 40px 50px;
+        }
+
+        .news-detail-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 20px;
+        }
+
+        .news-group {
+            color: #666;
+        }
+
+        .news-date {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .news-detail-content h2 {
+            font-size: 32px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+
+        .news-detail-text {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            text-align: justify;
+        }
+
+        .news-detail-link {
+            display: inline-block;
+            color: #007bff;
+            text-decoration: none;
+            font-size: 16px;
+            line-height: 1.6;
+            transition: color 0.3s;
+            border-bottom: 1px solid transparent;
+        }
+
+        .news-detail-link:hover {
+            color: #0056b3;
+            border-bottom: 1px solid #0056b3;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li a {
+                font-size: 12px;
+                padding: 8px 0;
+            }
+
+            .submenu {
+                min-width: 140px;
+                padding: 10px 0;
+            }
+
+            .submenu li a {
+                font-size: 12px;
+                padding: 8px 20px;
+            }
+
+            .banner-container {
+                height: 400px;
+            }
+
+            .banner-text h1 {
+                font-size: 36px;
+                letter-spacing: 4px;
+            }
+
+            .banner-text p {
+                font-size: 16px;
+            }
+        }
+        
+        /* Footer Style */
+        .site-footer {
+            background-color: #1e1e1e;
+            color: #ccc;
+            text-align: center;
+            padding: 20px 10px;
+            font-size: 14px;
+            line-height: 1.6;
+            border-top: 1px solid #333;
+        }
+
+        .footer-content a {
+            color: #9ad0ff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-content a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .site-footer {
+                font-size: 13px;
+                padding: 15px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="UES Logo" class="logo-img">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="news-list.html">新闻</a></li>
+                <li><a href="research-test.html">研究</a></li>
+                <li><a href="members-researchers.html">成员</a></li>
+                <li><a href="publications-journals.html">成果</a></li>
+                <li><a href="gallery-research-images.html">媒体库</a></li>
+                <li><a href="contact-us.html">联系我们</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 轮播图区域 -->
+    <div class="banner-container">
+        <div class="banner-slider">
+            <div class="banner-slide">
+                <video src="images/video11.mp4" muted autoplay playsinline></video>
+            </div>
+        </div>
+    </div>
+
+    <!-- 内容区域 -->
+    <div id="content-container">
+        <section class="latest-news-section">
+            <div class="latest-news-header">
+                <h2>最新进展</h2>
+            </div>
+            
+            <!-- 新闻详情区域 -->
+            <div class="news-detail" id="newsDetail">
+                <a href="index.html" class="back-button">返回</a>
+                
+                <div class="news-detail-image">
+                    <img id="detailImage" src="images/图1.jpg" alt="Automated colony-picking instrument based on AI-driven image identification获评国际会议最佳学生论文奖">
+                </div>
+                
+                <div class="news-detail-content">
+                    <div class="news-detail-meta">
+                        <span class="news-group" id="detailGroup"></span>
+                        <span class="news-date" id="detailDate">Sep 2025</span>
+                    </div>
+                    <h2 id="detailTitle">Automated colony-picking instrument based on AI-driven image identification获评国际会议最佳学生论文奖</h2>
+                    <p class="news-detail-text" id="detailText">自动化菌落挑选对于微生物研究至关重要，现有技术存在菌落误识别与机械精度不足的缺陷。提出了基于AI的精准菌落识别算法，研发了一套自动化菌落挑选仪器。获评IEEE International Conference on Mechanical Automation and Engineering Applications最佳学生论文奖。获国家自然科学基金、广州国家实验室、重庆自然科学基金的项目支持。</p>
+                    <a href="#" class="news-detail-link" id="detailLink" target="_blank"></a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 网页底部 -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>© 2025 UES Group | All Rights Reserved</p>
+            <p>
+            <a href="https://beian.miit.gov.cn/" target="_blank">
+                沪交ICP备20250301
+            </a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的轮播图/视频逻辑
+        const slides = document.querySelectorAll('.banner-slide');
+        if (slides.length > 0) {
+            slides[0].classList.add('active');
+            const video = slides[0].querySelector('video');
+            if (video) {
+                video.play().catch(err => console.log('视频播放失败:', err));
+                // 视频播放完自动重新播放
+                video.addEventListener('ended', () => {
+                    video.currentTime = 0; 
+                    video.play();
+                });
+            }
+        }
+
+        // 鼠标悬停控制
+        const bannerContainer = document.querySelector('.banner-container');
+        document.addEventListener("click", function(event) {
+            if (!bannerContainer.contains(event.target)) {
+                bannerContainer.classList.add("small");
+            }
+        });
+
+        bannerContainer.addEventListener("click", function(event) {
+            event.stopPropagation(); 
+            this.classList.remove("small");
+        });
+    </script>
+</body>
+</html>

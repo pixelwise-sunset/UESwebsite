@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成果 - 产品</title>
+    <style>
+        /* 公共样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        /* 头部样式 */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            height: 80px;
+            width: auto;
+            display: block;
+        }
+
+        /* 导航菜单 */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #666;
+            font-size: 25px;
+            font-weight: 500;
+            transition: color 0.3s;
+            letter-spacing: 0.5px;
+            display: block;
+            padding: 10px 0;
+        }
+
+        nav ul li a:hover {
+            color: #0066cc;
+        }
+
+        /* 轮播图容器 */
+        .banner-container {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            overflow: hidden;
+            transition: height 0.8s ease;
+        }
+
+        .banner-container.small {
+            height: 300px;
+        }
+
+        .banner-slider {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .banner-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+        }
+
+        .banner-slide.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .banner-slide video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 成果列表容器 */
+        .publications-list-section {
+            padding: 80px 50px;
+            min-height: 600px;
+        }
+
+        .publications-list-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .publications-list-header h2 {
+            font-size: 42px;
+            font-weight: 300;
+            color: #333;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        /* Tab 导航 */
+        .tab-navigation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+            margin-bottom: 50px;
+        }
+
+        .tab-btn {
+            padding: 10px 40px;
+            background-color: transparent;
+            border: none;
+            color: #666;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .tab-btn:hover {
+            color: #1976d2;
+        }
+
+        .tab-btn.active {
+            color: #1976d2;
+            font-weight: 600;
+        }
+
+        .tab-btn:not(:last-child)::after {
+            content: '|';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #1976d2;
+            font-size: 20px;
+            font-weight: 300;
+        }
+
+        /* Tab 内容 */
+        .tab-content-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 成果卡片样式 */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 两列 */
+            gap: 50px;
+            margin-top: 20px;
+            margin-left: 100px;
+            margin-right: 100px;
+        }
+
+        .product-card {
+            display: flex;
+            flex-direction: column;
+            background: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 12px 16px;
+            text-align: center;
+        }
+
+        .product-info h3 {
+            font-size: 16px;
+            margin: 8px 0;
+        }
+
+        .product-year {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .product-gallery {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 320px;
+            background: #ffffff; /* 没图时白色背景 */
+            object-fit: contain; /* 按最长比例 */
+            border-radius: 8px;
+        }
+
+        .thumbnails {
+            display: flex;
+            gap: 6px;
+            overflow-x: auto; /* 图片多时可横向滑动 */
+            padding-bottom: 4px;
+        }
+
+        .thumbnails img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 6px;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+
+        .thumbnails img:hover {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        .thumbnails img.active {
+            opacity: 1;
+            border: 2px solid #007aff;
+        }
+
+        /* 底部样式 */
+        .site-footer {
+            background-color: #1e1e1e;
+            color: #ccc;
+            text-align: center;
+            padding: 20px 10px;
+            font-size: 14px;
+            line-height: 1.6;
+            border-top: 1px solid #333;
+        }
+
+        .footer-content a {
+            color: #9ad0ff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-content a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .banner-container {
+                height: 400px;
+            }
+            .publications-list-section {
+                padding: 50px 20px;
+            }
+            .publications-list-header h2 {
+                font-size: 28px;
+                letter-spacing: 3px;
+            }
+            .tab-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            .tab-btn:not(:last-child)::after {
+                font-size: 16px;
+            }
+            .products-grid {
+                grid-template-columns: 1fr;
+                margin-left: 0;
+                margin-right: 0;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="UES Logo" class="logo-img">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="news-list.html">新闻</a></li>
+                <li><a href="research-test.html">研究</a></li>
+                <li><a href="members-researchers.html">成员</a></li>
+                <li><a href="publications-journals.html" style="color: #0066cc;">成果</a></li>
+                <li><a href="gallery-research-images.html">媒体库</a></li>
+                <li><a href="contact-us.html">联系我们</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 轮播图区域 -->
+    <div class="banner-container">
+        <div class="banner-slider">
+            <div class="banner-slide active">
+                <video src="images/video11.mp4" muted autoplay playsinline></video>
+            </div>
+        </div>
+    </div>
+
+    <!-- 成果列表区域 -->
+    <section class="publications-list-section">
+        <div class="publications-list-header">
+            <h2>成果</h2>
+        </div>
+
+        <!-- Tab 导航 -->
+        <div class="tab-navigation">
+            <a href="publications-journals.html" class="tab-btn">期刊论文</a>
+            <a href="publications-conferences.html" class="tab-btn">会议论文</a>
+            <a href="publications-products.html" class="tab-btn active">产品</a>
+        </div>
+
+        <!-- Tab 内容: 产品 -->
+        <div class="tab-content-inner">
+            <div class="products-grid">
+                <!-- 产品卡片 -->
+                <div class="product-card">
+                    <div class="product-gallery">
+                        <img src="images/achievement/white.png" class="main-image">
+                    </div>
+                    <div class="thumbnails">
+                        <img src="images/achievement/white.png" class="thumbnail">
+                    </div>
+                    <div class="product-info">
+                        <h3>力学材料设计自进化平台-敬待发布</h3>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-gallery">
+                        <img src="images/achievement/图2-1.png" class="main-image">
+                        <div class="thumbnails">
+                            <img src="images/achievement/图2-1.png">
+                            <img src="images/achievement/图2-2.png">
+                            <img src="images/achievement/图2-3.png">
+                            <img src="images/achievement/图2-4.png">
+                            <img src="images/achievement/图2-5.png">
+                            <img src="images/achievement/图2-6.png">
+                            <img src="images/achievement/图2-7.png">
+                            <img src="images/achievement/图2-8.png">
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>力感器件</h3>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-gallery">
+                        <img src="images/achievement/white.png" class="main-image">
+                    </div>
+                    <div class="thumbnails">
+                        <img src="images/achievement/white.png" class="thumbnail">
+                    </div>
+                    <div class="product-info">
+                        <h3>喷墨砂型工艺优化自进化平台-敬待发布</h3>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-gallery">
+                        <img src="images/achievement/white.png" class="main-image">
+                    </div>
+                    <div class="thumbnails">
+                        <img src="images/achievement/white.png" class="thumbnail">
+                    </div>
+                    <div class="product-info">
+                        <h3>全自动浇筑装备-敬待发布</h3>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-gallery">
+                        <img src="images/achievement/图4-1.png" class="main-image">
+                    </div>
+                    <div class="thumbnails">
+                        <img src="images/achievement/图4-1.png" class="thumbnail">
+                    </div>
+                    <div class="product-info">
+                        <h3>凝胶筛选自进化工作站</h3>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-gallery">
+                        <img src="images/achievement/图5-1.png" class="main-image">
+                    </div>
+                    <div class="thumbnails">
+                        <img src="images/achievement/图5-1.png" class="thumbnail">
+                    </div>
+                    <div class="product-info">
+                        <h3>细胞成像仪</h3>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-gallery">
+                        <img src="images/achievement/white.png" class="main-image">
+                    </div>
+                    <div class="thumbnails">
+                        <img src="images/achievement/white.png" class="thumbnail">
+                    </div>
+                    <div class="product-info">
+                        <h3>细胞筛选仪-敬待发布</h3>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-gallery">
+                        <img src="images/achievement/图7-1.png" class="main-image">
+                    </div>
+                    <div class="thumbnails">
+                        <img src="images/achievement/图7-1.png" class="thumbnail">
+                    </div>
+                    <div class="product-info">
+                        <h3>蛋白质纯化前处理工作站</h3>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-gallery">
+                        <img src="images/achievement/white.png" class="main-image">
+                    </div>
+                    <div class="thumbnails">
+                        <img src="images/achievement/white.png" class="thumbnail">
+                    </div>
+                    <div class="product-info">
+                        <h3>抗体设计自进化平台-敬待发布</h3>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-gallery">
+                        <img src="images/achievement/white.png" class="main-image">
+                    </div>
+                    <div class="thumbnails">
+                        <img src="images/achievement/white.png" class="thumbnail">
+                    </div>
+                    <div class="product-info">
+                        <h3>荧光蛋白设计自进化平台-敬待发布</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 网页底部 -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>© 2025 UES Group | All Rights Reserved</p>
+            <p>
+                <a href="https://beian.miit.gov.cn/" target="_blank">
+                    沪交ICP备20250301
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Banner 逻辑
+        const bannerContainer = document.querySelector('.banner-container');
+        document.addEventListener("click", function(event) {
+            if (!bannerContainer.contains(event.target)) {
+                bannerContainer.classList.add("small");
+            }
+        });
+        bannerContainer.addEventListener("click", function(event) {
+            event.stopPropagation();
+            this.classList.remove("small");
+        });
+
+        // 视频自动播放逻辑
+        const video = document.querySelector('.banner-slide video');
+        if (video) {
+            video.addEventListener('ended', () => {
+                video.currentTime = 0;
+                video.play();
+            });
+            video.play().catch(e => console.log(e));
+        }
+
+        // 产品图片交互逻辑
+        document.querySelectorAll('.product-card').forEach(card => {
+            const mainImg = card.querySelector('.main-image');
+            const thumbs = card.querySelectorAll('.thumbnails img');
+
+            // 如果缩略图只有 1 张且为占位图 → 不设 active
+            if (thumbs.length === 1 && thumbs[0].src.includes("white.png")) {
+                return;
+            }
+
+            thumbs.forEach(thumb => {
+                thumb.addEventListener('click', () => {
+                    mainImg.src = thumb.src;
+                    thumbs.forEach(t => t.classList.remove('active'));
+                    thumb.classList.add('active');
+                });
+            });
+
+            if (thumbs.length > 0) thumbs[0].classList.add('active');
+        });
+    </script>
+</body>
+</html>

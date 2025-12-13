@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系我们 - 招聘启事</title>
+    <style>
+        /* 公共样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        /* 头部样式 */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            height: 80px;
+            width: auto;
+            display: block;
+        }
+
+        /* 导航菜单 */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #666;
+            font-size: 25px;
+            font-weight: 500;
+            transition: color 0.3s;
+            letter-spacing: 0.5px;
+            display: block;
+            padding: 10px 0;
+        }
+
+        nav ul li a:hover {
+            color: #0066cc;
+        }
+
+        /* 轮播图容器 */
+        .banner-container {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            overflow: hidden;
+            transition: height 0.8s ease;
+        }
+
+        .banner-container.small {
+            height: 300px;
+        }
+
+        .banner-slider {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .banner-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+        }
+
+        .banner-slide.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .banner-slide video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 联系我们区域 */
+        .contact-section {
+            padding: 80px 50px;
+            min-height: 600px;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .contact-header h2 {
+            font-size: 42px;
+            font-weight: 300;
+            color: #333;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        /* Tab 导航 */
+        .tab-navigation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+            margin-bottom: 50px;
+        }
+
+        .tab-btn {
+            padding: 10px 40px;
+            background-color: transparent;
+            border: none;
+            color: #666;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .tab-btn:hover {
+            color: #1976d2;
+        }
+
+        .tab-btn.active {
+            color: #1976d2;
+            font-weight: 600;
+        }
+
+        .tab-btn:not(:last-child)::after {
+            content: '|';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #1976d2;
+            font-size: 20px;
+            font-weight: 300;
+        }
+
+        /* Tab 内容 */
+        .tab-content-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 招聘列表样式 */
+        .recruitment-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .recruitment-list.hidden {
+            display: none;
+        }
+
+        .recruitment-item {
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .recruitment-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-left: 4px solid #1976d2;
+        }
+
+        .recruitment-meta {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 80px;
+            padding-right: 30px;
+            border-right: 1px solid #eee;
+        }
+
+        .recruitment-date {
+            font-size: 14px;
+            color: #999;
+            font-weight: 500;
+        }
+
+        .recruitment-item h3 {
+            font-size: 20px;
+            color: #333;
+            font-weight: 600;
+            flex: 1;
+        }
+
+        /* 招聘详情样式 */
+        .recruitment-detail {
+            display: none;
+            background: #fff;
+            padding: 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .recruitment-detail.active {
+            display: block;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .back-button {
+            padding: 15px 30px;
+            background: #f8f9fa;
+            border: none;
+            border-bottom: 1px solid #eee;
+            color: #666;
+            font-size: 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+            text-align: left;
+            transition: all 0.3s;
+        }
+
+        .back-button:hover {
+            background: #f0f0f0;
+            color: #1976d2;
+            padding-left: 35px;
+        }
+
+        .back-button::before {
+            content: '←';
+            font-size: 18px;
+        }
+
+        .recruitment-detail-content {
+            padding: 40px 60px;
+        }
+
+        .recruitment-detail-content .main-title {
+            font-size: 28px;
+            color: #1976d2;
+            margin-bottom: 30px;
+            font-weight: 600;
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .recruitment-detail-content h3 {
+            font-size: 18px;
+            color: #333;
+            margin: 25px 0 15px;
+            padding-left: 12px;
+            border-left: 4px solid #1976d2;
+            line-height: 1.4;
+        }
+
+        .recruitment-detail-content p {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+
+        .recruitment-detail-content .intro {
+            font-size: 16px;
+            color: #444;
+            margin-bottom: 30px;
+            line-height: 2;
+            text-indent: 2em;
+        }
+
+        .recruitment-detail-content .contact-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 40px;
+            border: 1px solid #eee;
+        }
+
+        /* 底部样式 */
+        .site-footer {
+            background-color: #1e1e1e;
+            color: #ccc;
+            text-align: center;
+            padding: 20px 10px;
+            font-size: 14px;
+            line-height: 1.6;
+            border-top: 1px solid #333;
+        }
+
+        .footer-content a {
+            color: #9ad0ff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-content a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .banner-container {
+                height: 400px;
+            }
+            .contact-section {
+                padding: 50px 20px;
+            }
+            .contact-header h2 {
+                font-size: 28px;
+                letter-spacing: 3px;
+            }
+            .tab-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            .tab-btn:not(:last-child)::after {
+                font-size: 16px;
+            }
+            .recruitment-item {
+                padding: 20px 25px;
+            }
+            .recruitment-item h3 {
+                font-size: 16px;
+            }
+            .recruitment-meta {
+                font-size: 11px;
+                gap: 10px;
+            }
+            .recruitment-detail-content {
+                padding: 30px 20px;
+            }
+            .recruitment-detail-content .main-title {
+                font-size: 20px;
+            }
+            .recruitment-detail-content h3 {
+                font-size: 18px;
+            }
+            .recruitment-detail-content p {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="UES Logo" class="logo-img">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="news-list.html">新闻</a></li>
+                <li><a href="research-test.html">研究</a></li>
+                <li><a href="members-researchers.html">成员</a></li>
+                <li><a href="publications-journals.html">成果</a></li>
+                <li><a href="gallery-research-images.html">媒体库</a></li>
+                <li><a href="contact-us.html" style="color: #0066cc;">联系我们</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 轮播图区域 -->
+    <div class="banner-container">
+        <div class="banner-slider">
+            <div class="banner-slide active">
+                <video src="images/video11.mp4" muted autoplay playsinline></video>
+            </div>
+        </div>
+    </div>
+
+    <!-- 联系我们区域 -->
+    <section class="contact-section">
+        <div class="contact-header">
+            <h2>联系我们</h2>
+        </div>
+
+        <!-- Tab 导航 -->
+        <div class="tab-navigation">
+            <a href="contact-us.html" class="tab-btn">联系我们</a>
+            <a href="contact-recruitment.html" class="tab-btn active">招聘启事</a>
+            <a href="contact-partners.html" class="tab-btn">合作伙伴</a>
+        </div>
+
+        <!-- Tab 内容: 招聘启事 -->
+        <div class="tab-content-inner">
+            <!-- 招聘列表 -->
+            <div class="recruitment-list" id="recruitmentList">
+                <div class="recruitment-item" onclick="showRecruitmentDetail()">
+                    <div class="recruitment-meta">
+                        <span class="recruitment-date">Oct 2025</span>
+                    </div>
+                    <h3>博士后招聘启事</h3>
+                </div>
+            </div>
+
+            <!-- 招聘详情 -->
+            <div class="recruitment-detail" id="recruitmentDetail">
+                <button class="back-button" onclick="showRecruitmentList()">返回</button>
+                
+                <div class="recruitment-detail-content">
+                    <div class="main-title">博士后招聘启事</div>
+                    
+                    <p class="intro">上海交通大学机械与动力工程学院无人实验系统研发团队，因科研与团队发展需要，现面向海内外诚聘博士后研究人员，欢迎青年学者加盟。</p>
+                    
+                    <h3>一、研究方向</h3>
+                    <p>1. 自动化、机器人技术</p>
+                    <p>2. 微流控技术</p>
+                    <p>3. 深度学习算法、大模型</p>
+                    <p>4. 分子动力学仿真技术</p>
+                    
+                    <h3>二、招聘条件</h3>
+                    <p>1. 年龄不超过35周岁，已获得博士学位或已通过博士学位论文答辩；</p>
+                    <p>2. 具备独立从事科研能力，在相关领域内国际主流期刊发表过高水平学术论文；</p>
+                    <p>3. 身体健康，责任心强，热爱科研工作，具有良好的团队合作意识与创新能力；</p>
+                    <p>4. 具有较强的中英文书面表达能力。</p>
+                    
+                    <h3>三、岗位职责</h3>
+                    <p>1. 完成相关科研项目；</p>
+                    <p>2. 申报博士后基金与国家自然科学青年基金等科研项目；</p>
+                    <p>3. 协助指导研究生及本科生。</p>
+                    
+                    <h3>四、岗位待遇</h3>
+                    <p>1. 年薪不低于25万元，具体额度由导师及博士后本人协商确定，另可根据工作表现与成果情况发放奖励津贴；</p>
+                    <p>2. 支持博士后在站期间申报"中国博士后创新人才支持计划"或"上海市超级博士后激励计划"；</p>
+                    <p>3. 提供必要的办公、科研与实验条件；</p>
+                    <p>4. 按照上海市和上海交通大学博士后管理政策办理有关落户事宜，享受社会保险、公积金等福利待遇；博士后出站留上海工作，配偶及子女可随迁落户。</p>
+                    
+                    <h3>五、应聘方式</h3>
+                    <p>1. 有意者请将详细的个人简历，包括教育背景、工作经历、成果情况及联系方式发送至联系人邮箱，邮件标题注明"博士后应聘+本人姓名+毕业院校"；</p>
+                    <p>2. 通过电话或者电子邮件沟通后，邀请应聘者面谈。</p>
+                    
+                    <p class="contact-info"><strong>联系人：</strong>胡松涛<br><strong>邮箱：</strong>hsttaotao@sjtu.edu.cn</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 网页底部 -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>© 2025 UES Group | All Rights Reserved</p>
+            <p>
+                <a href="https://beian.miit.gov.cn/" target="_blank">
+                    沪交ICP备20250301
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Banner 逻辑
+        const bannerContainer = document.querySelector('.banner-container');
+        document.addEventListener("click", function(event) {
+            if (!bannerContainer.contains(event.target)) {
+                bannerContainer.classList.add("small");
+            }
+        });
+        bannerContainer.addEventListener("click", function(event) {
+            event.stopPropagation();
+            this.classList.remove("small");
+        });
+
+        // 视频自动播放逻辑
+        const video = document.querySelector('.banner-slide video');
+        if (video) {
+            video.addEventListener('ended', () => {
+                video.currentTime = 0;
+                video.play();
+            });
+            video.play().catch(e => console.log(e));
+        }
+
+        // 显示招聘详情
+        function showRecruitmentDetail() {
+            const recruitmentList = document.getElementById('recruitmentList');
+            const recruitmentDetail = document.getElementById('recruitmentDetail');
+            
+            recruitmentList.classList.add('hidden');
+            recruitmentDetail.classList.add('active');
+            
+            // 滚动到顶部
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 返回招聘列表
+        function showRecruitmentList() {
+            const recruitmentList = document.getElementById('recruitmentList');
+            const recruitmentDetail = document.getElementById('recruitmentDetail');
+            
+            recruitmentList.classList.remove('hidden');
+            recruitmentDetail.classList.remove('active');
+            
+            // 滚动到顶部
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

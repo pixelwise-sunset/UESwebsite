@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model-driven triboelectric sensors for multidimensional tactile perception发表在Nano Energy - UES Group</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            overflow-x: hidden;
+            background-color: #f8f9fa;
+        }
+
+        /* 头部样式 */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            height: 80px;
+            width: auto;
+            display: block;
+        }
+
+        /* 导航菜单 */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #666;
+            font-size: 25px;
+            font-weight: 500;
+            transition: color 0.3s;
+            letter-spacing: 0.5px;
+            display: block;
+            padding: 10px 0;
+        }
+
+        nav ul li a:hover {
+            color: #0066cc;
+        }
+        
+        /* 轮播图容器 */
+        .banner-container {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            overflow: hidden;
+            transition: height 0.8s ease;
+        }
+
+        .banner-container.small {
+            height: 300px;
+        }
+
+        .banner-slider {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .banner-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 1; /* Default visible for single slide */
+        }
+
+        .banner-slide video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 详情页样式 */
+        .news-detail {
+            max-width: 1000px;
+            margin: 50px auto;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            padding-bottom: 50px;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            margin: 30px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+        .back-button::before {
+            content: '←';
+            font-size: 20px;
+        }
+
+        .news-detail-image {
+            width: 100%;
+            min-height: 300px;
+            overflow: hidden;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px 0;
+        }
+
+        .news-detail-image img {
+            max-width: 100%;
+            max-height: 600px;
+            object-fit: contain;
+        }
+
+        .news-detail-content {
+            padding: 40px 50px;
+        }
+
+        .news-detail-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 20px;
+        }
+
+        .news-detail-content h2 {
+            font-size: 32px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+
+        .news-detail-text {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            text-align: justify;
+        }
+        
+        /* 底部样式 */
+        .site-footer {
+            background-color: #1e1e1e;
+            color: #ccc;
+            text-align: center;
+            padding: 20px 10px;
+            font-size: 14px;
+            line-height: 1.6;
+            border-top: 1px solid #333;
+        }
+
+        .footer-content a {
+            color: #9ad0ff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-content a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+             .banner-container {
+                height: 400px;
+            }
+            .news-detail {
+                margin: 20px;
+            }
+            .news-detail-content {
+                padding: 20px;
+            }
+             .news-detail-content h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="UES Logo" class="logo-img">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="news-list.html">新闻</a></li>
+                <li><a href="research-test.html">研究</a></li>
+                <li><a href="members-researchers.html">成员</a></li>
+                <li><a href="publications-journals.html">成果</a></li>
+                <li><a href="gallery-research-images.html">媒体库</a></li>
+                <li><a href="contact-us.html">联系我们</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 轮播图区域 -->
+    <div class="banner-container">
+        <div class="banner-slider">
+            <div class="banner-slide">
+                <video src="images/video11.mp4" muted autoplay playsinline></video>
+            </div>
+        </div>
+    </div>
+
+    <!-- 内容区域 -->
+    <div class="news-detail">
+        <a href="news-list.html" class="back-button">返回</a>
+        
+        <div class="news-detail-image">
+            <img src="images/图17.png" alt="Model-driven triboelectric sensors for multidimensional tactile perception发表在Nano Energy">
+        </div>
+        
+        <div class="news-detail-content">
+            <div class="news-detail-meta">
+                <span class="news-date">Jun 2023</span>
+            </div>
+            <h2>Model-driven triboelectric sensors for multidimensional tactile perception发表在Nano Energy</h2>
+            <p class="news-detail-text">针对力觉测量法切向解耦难题，提出了一种基于摩擦电的自传感测量技术。建立了基于小变形假说的统一理论模型，实现了法切向二维解耦，并基于叠加原理扩展到三维解耦。应用于生物实验自动化，通过力学反馈实现了机械手碰壁排液，解决了液滴残留难题。发表在Nano Energy。获国家自然科学基金、上海自然科学基金、中国科协青年人才托举、广州国家实验室的项目支持。</p>
+        </div>
+    </div>
+
+    <!-- 网页底部 -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>© 2025 UES Group | All Rights Reserved</p>
+            <p>
+            <a href="https://beian.miit.gov.cn/" target="_blank">
+                沪交ICP备20250301
+            </a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple banner logic
+        const video = document.querySelector('.banner-slide video');
+        if (video) {
+            video.play().catch(err => console.log('Video play error:', err));
+            video.addEventListener('ended', () => {
+                video.currentTime = 0; 
+                video.play();
+            });
+        }
+        
+        const bannerContainer = document.querySelector('.banner-container');
+        document.addEventListener("click", function(event) {
+            if (!bannerContainer.contains(event.target)) {
+                bannerContainer.classList.add("small");
+            }
+        });
+
+        bannerContainer.addEventListener("click", function(event) {
+            event.stopPropagation(); 
+            this.classList.remove("small");
+        });
+    </script>
+</body>
+</html>
