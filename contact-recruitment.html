@@ -178,150 +178,176 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* 招聘列表样式 */
+        /* ===== 招聘列表整体，风格对齐 news-list ===== */
         .recruitment-list {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        
-        .recruitment-list.hidden {
-            display: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: block;
+            gap: 0;
         }
 
+        /* ===== 单条招聘，完全对齐 news-item ===== */
         .recruitment-item {
-            background: #fff;
-            padding: 30px 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            background-color: #D8DAE6;
+            padding: 15px 15px;
+            margin-bottom: 0;
+            border-radius: 0;
+            box-shadow: none;
             cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 30px;
+            display: block;
+            transition: background-color 0.3s;
         }
 
+        /* 奇偶行 */
+        .recruitment-item:nth-child(odd) {
+            background-color: #D8DAE6;
+        }
+        .recruitment-item:nth-child(even) {
+            background-color: #ffffff;
+        }
+
+        .recruitment-item:nth-child(odd):hover {
+            background-color: #c4c7d4;
+        }
+        .recruitment-item:nth-child(even):hover {
+            background-color: #f0f0f0;
+        }
+
+        /* 去掉你原来的 hover 位移和左边框 */
         .recruitment-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            border-left: 4px solid #1976d2;
+            transform: none;
+            box-shadow: none;
+            border-left: none;
         }
 
+        /* ===== 时间信息，对齐 news-meta ===== */
         .recruitment-meta {
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            min-width: 80px;
-            padding-right: 30px;
-            border-right: 1px solid #eee;
+            gap: 0;
+            min-width: auto;
+            padding: 0;
+            margin-bottom: 4px;
+            border-right: none;
+            color: #57636F;
+            font-size: 12px;
         }
 
         .recruitment-date {
-            font-size: 14px;
-            color: #999;
-            font-weight: 500;
+            font-size: 12px;
+            color: #57636F;
         }
 
+        /* ===== 标题样式，对齐 news-item h3 ===== */
         .recruitment-item h3 {
-            font-size: 20px;
-            color: #333;
+            font-size: 18px;
             font-weight: 600;
-            flex: 1;
+            color: #57636F;
+            margin: 0;
+            line-height: 1.6;
         }
 
-        /* 招聘详情样式 */
+        .recruitment-item:hover h3 {
+            color: #1976d2;
+        }
+
+        /* ===== 招聘详情容器，对齐 news-detail ===== */
         .recruitment-detail {
             display: none;
-            background: #fff;
-            padding: 0;
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #ffffff;
             border-radius: 8px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
             overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         }
 
         .recruitment-detail.active {
             display: block;
-            animation: slideUp 0.5s ease-out;
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .back-button {
-            padding: 15px 30px;
-            background: #f8f9fa;
-            border: none;
-            border-bottom: 1px solid #eee;
-            color: #666;
-            font-size: 15px;
-            cursor: pointer;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 8px;
-            width: 100%;
-            text-align: left;
+            padding: 12px 24px;
+            margin: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
             transition: all 0.3s;
         }
 
         .back-button:hover {
-            background: #f0f0f0;
-            color: #1976d2;
-            padding-left: 35px;
+            background-color: #0056b3;
         }
 
         .back-button::before {
             content: '←';
-            font-size: 18px;
+            font-size: 20px;
         }
 
+        /* ===== 内容区 ===== */
         .recruitment-detail-content {
-            padding: 40px 60px;
+            padding: 40px 50px;
         }
 
+        /* 主标题 → news-detail h2 风格 */
         .recruitment-detail-content .main-title {
-            font-size: 28px;
-            color: #1976d2;
-            margin-bottom: 30px;
+            font-size: 32px;
             font-weight: 600;
-            text-align: center;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #f0f0f0;
-        }
-
-        .recruitment-detail-content h3 {
-            font-size: 18px;
             color: #333;
-            margin: 25px 0 15px;
-            padding-left: 12px;
-            border-left: 4px solid #1976d2;
-            line-height: 1.4;
+            margin-bottom: 25px;
+            text-align: left;
+            border: none;
+            padding: 0;
         }
 
+        /* 小标题 */
+        .recruitment-detail-content h3 {
+            font-size: 20px;
+            color: #333;
+            margin: 30px 0 15px;
+            padding-left: 0;
+            border-left: none;
+            font-weight: 600;
+        }
+
+        /* 正文段落 */
         .recruitment-detail-content p {
-            font-size: 15px;
+            font-size: 16px;
             color: #555;
             line-height: 1.8;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             text-align: justify;
         }
 
+        /* 简介段落 */
         .recruitment-detail-content .intro {
             font-size: 16px;
-            color: #444;
+            color: #555;
+            line-height: 1.8;
             margin-bottom: 30px;
-            line-height: 2;
             text-indent: 2em;
         }
 
+        /* 联系方式 */
         .recruitment-detail-content .contact-info {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
             margin-top: 40px;
-            border: 1px solid #eee;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            font-size: 15px;
+            color: #555;
+        }
+
+        /* 隐藏类 */
+        .hidden {
+            display: none !important;
         }
 
         /* 底部样式 */
@@ -445,16 +471,24 @@
         <div class="tab-content-inner">
             <!-- 招聘列表 -->
             <div class="recruitment-list" id="recruitmentList">
-                <div class="recruitment-item" onclick="showRecruitmentDetail()">
+                <div class="recruitment-item" onclick="showRecruitmentDetail(0)">
                     <div class="recruitment-meta">
                         <span class="recruitment-date">Oct 2025</span>
                     </div>
                     <h3>博士后招聘启事</h3>
                 </div>
+
+                <div class="recruitment-item" onclick="showRecruitmentDetail(1)">
+                    <div class="recruitment-meta">
+                        <span class="recruitment-date">Oct 2025</span>
+                    </div>
+                    <h3>硕士生招收启事</h3>
+                </div>
             </div>
 
+
             <!-- 招聘详情 -->
-            <div class="recruitment-detail" id="recruitmentDetail">
+            <div class="recruitment-detail" id="recruitmentDetail-0">
                 <button class="back-button" onclick="showRecruitmentList()">返回</button>
                 
                 <div class="recruitment-detail-content">
@@ -492,6 +526,34 @@
                     <p class="contact-info"><strong>联系人：</strong>胡松涛<br><strong>邮箱：</strong>hsttaotao@sjtu.edu.cn</p>
                 </div>
             </div>
+                    <!-- 招聘详情 -->
+            <div class="recruitment-detail" id="recruitmentDetail-1">
+                <button class="back-button" onclick="showRecruitmentList()">返回</button>
+                
+                <div class="recruitment-detail-content">
+                    <div class="main-title">硕士生招收启事</div>
+                                        
+                    <h3>一、研究基础与方向</h3>
+                    <p>1. 自动化，含机器人、微流控等</p>
+                    <p>2. 测量，含光测、电测、多模态等</p>
+                    <p>3. 科学仪器</p>
+                    <p>4. 算法，含深度学习、大模型等</p>
+                    <p>5. 仿真，含分子动力学等</p>
+                    
+                    <h3>二、招收方式</h3>
+                    <p>1. 交大：校本部直博、普博、硕博、学硕、专硕</p>
+                    <p>2. 交大：专项、联培，务必提前确认</p>
+                    <p>3. 宁大：校本部学硕、专硕</p>
+                    <p>4. 广实：可推荐直博</p>
+                    
+                    <h3>三、培养方式</h3>
+                    <p>1. 要求：1）做事情认真负责；2）热爱团队</p>
+                    <p>2. 鼓励：1）学科交叉；2）访问交流3）提前毕业</p>
+                    <p>3. 建议：1）告诉导师真实需求，通过讨论明确方案，认真负责执行方案，遇到问题及时与导师讨论调整优化方案；2）我们是有机会把学术与产业一起做好的，即面向产业开展科研的过程中，沿途下高水平的蛋</p>
+                    
+                    <p class="contact-info"><strong>联系人：</strong>胡松涛<br><strong>邮箱：</strong>hsttaotao@sjtu.edu.cn</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -523,26 +585,33 @@
         }
 
         // 显示招聘详情
-        function showRecruitmentDetail() {
+        function showRecruitmentDetail(index) {
             const recruitmentList = document.getElementById('recruitmentList');
-            const recruitmentDetail = document.getElementById('recruitmentDetail');
-            
+            const details = document.querySelectorAll('.recruitment-detail');
+
+            // 隐藏列表
             recruitmentList.classList.add('hidden');
-            recruitmentDetail.classList.add('active');
-            
-            // 滚动到顶部
+
+            // 隐藏所有详情
+            details.forEach(d => d.classList.remove('active'));
+
+            // 显示指定详情
+            const target = document.getElementById('recruitmentDetail-' + index);
+            if (target) {
+                target.classList.add('active');
+            }
+
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // 返回招聘列表
         function showRecruitmentList() {
             const recruitmentList = document.getElementById('recruitmentList');
-            const recruitmentDetail = document.getElementById('recruitmentDetail');
-            
+            const details = document.querySelectorAll('.recruitment-detail');
+
             recruitmentList.classList.remove('hidden');
-            recruitmentDetail.classList.remove('active');
-            
-            // 滚动到顶部
+            details.forEach(d => d.classList.remove('active'));
+
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
