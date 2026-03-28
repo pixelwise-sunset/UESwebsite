@@ -182,7 +182,7 @@
             grid-column: 1 / -1;
             height: 1px;
             background-color: #ccc;
-            margin: 20px 0;
+            margin: 10px 0;
             grid-auto-rows: auto;
             display: block;
         }
@@ -272,6 +272,22 @@
         .thumbnails img.active {
             opacity: 1;
             border: 2px solid #007aff;
+        }
+
+        /* 针对标题的样式 */
+        .section-title {
+            width: 100%;
+            grid-column: 1 / -1;
+            text-align: center;
+            color: #666666;
+            font-size: 16px;
+            font-weight: normal;
+            
+            /* 👇 核心杀招：清空内边距，并用负边距抵消 Grid Gap */
+            padding: 0;
+            line-height: 1;
+            margin-top: -15px;     /* 向上拉近与分割线的距离（数值越小靠得越近，可改为 -20px 或 -30px 试试） */
+            margin-bottom: 5px;    /* 缩小与下方卡片的距离 */
         }
 
         /* 底部样式 */
@@ -379,6 +395,7 @@
         <!-- Tab 内容: 产品 -->
         <div class="tab-content-inner">
             <div class="products-grid">
+                <h2 class="section-title">力感器件开发</h2>
                 <!-- 产品卡片 -->
                 <div class="product-card">
                     <div class="product-gallery">
@@ -413,6 +430,7 @@
 
                 <div class="divider"></div>
 
+                <h2 class="section-title">喷墨砂型打印</h2>
                 <div class="product-card">
                     <div class="product-gallery">
                         <img src="images/achievement/white.png" class="main-image">
@@ -428,6 +446,7 @@
                 <div class="divider"></div>
 
 
+                <h2 class="section-title">生命科学诊疗</h2>
                 <div class="product-card">
                     <div class="product-gallery">
                         <img src="images/achievement/图4-1.png" class="main-image">
@@ -525,6 +544,54 @@
                     </div>
                     <div class="product-info">
                         <h3>细胞筛选仪-敬待发布</h3>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+                
+                <h2 class="section-title">实验智能体</h2>
+                <div class="product-card">
+                    <div class="product-gallery">
+                        <img src="images/achievement/white.png" class="main-image">
+                    </div>
+                    <div class="thumbnails">
+                        <img src="images/achievement/white.png" class="thumbnail">
+                    </div>
+                    <div class="product-info">
+                        <h3>垂域模型设计智能体-敬待发布</h3>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-gallery">
+                        <img src="images/achievement/white.png" class="main-image">
+                    </div>
+                    <div class="thumbnails">
+                        <img src="images/achievement/white.png" class="thumbnail">
+                    </div>
+                    <div class="product-info">
+                        <h3>模型微调智能体</h3>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-gallery">
+                        <img src="images/achievement/white.png" class="main-image">
+                    </div>
+                    <div class="thumbnails">
+                        <img src="images/achievement/white.png" class="thumbnail">
+                    </div>
+                    <div class="product-info">
+                        <h3>可靠性诊断与预测智能体</h3>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-gallery">
+                        <img src="images/achievement/white.png" class="main-image">
+                    </div>
+                    <div class="thumbnails">
+                        <img src="images/achievement/white.png" class="thumbnail">
+                    </div>
+                    <div class="product-info">
+                        <h3>调度智能体</h3>
                     </div>
                 </div>
 
