@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于研究生招收的若干朴素想法 - 联系我们</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Arial', 'Helvetica', sans-serif; background-color: #f8f9fa; overflow-x: hidden; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: relative; z-index: 1000; }
+        .logo { display: flex; align-items: center; gap: 15px; }
+        .logo-img { height: 80px; width: auto; display: block; }
+        nav ul { display: flex; list-style: none; gap: 30px; align-items: center; }
+        nav ul li a { text-decoration: none; color: #666; font-size: 25px; font-weight: 500; transition: color 0.3s; letter-spacing: 0.5px; display: block; padding: 10px 0; }
+        nav ul li a:hover { color: #0066cc; }
+        .banner-container { position: relative; width: 100%; height: 300px; overflow: hidden; }
+        .banner-slider, .banner-slide { position: relative; width: 100%; height: 100%; }
+        .banner-slide video { width: 100%; height: 100%; object-fit: cover; }
+        .contact-section { padding: 80px 50px; min-height: 600px; }
+        .contact-header { text-align: center; margin-bottom: 50px; }
+        .contact-header h2 { font-size: 42px; font-weight: 300; color: #333; letter-spacing: 6px; text-transform: uppercase; margin-bottom: 20px; }
+        .recruitment-detail { max-width: 1000px; margin: 0 auto; background-color: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); }
+        .recruitment-detail-content { padding: 40px 50px; }
+        .recruitment-detail-content .main-title { font-size: 32px; font-weight: 600; color: #333; margin-bottom: 25px; text-align: left; border: none; padding: 0; }
+        .recruitment-detail-content h3 { font-size: 20px; color: #333; margin: 30px 0 15px; padding-left: 0; border-left: none; font-weight: 600; }
+        .recruitment-detail-content p { font-size: 16px; color: #555; line-height: 1.8; margin-bottom: 14px; text-align: justify; }
+        .recruitment-detail-content .intro { font-size: 16px; color: #555; line-height: 1.8; margin-bottom: 30px; text-indent: 2em; }
+        .recruitment-detail-content .contact-info { margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 6px; font-size: 15px; color: #555; }
+        .site-footer { background-color: #1e1e1e; color: #ccc; text-align: center; padding: 20px 10px; font-size: 14px; line-height: 1.6; border-top: 1px solid #333; }
+        .footer-content a { color: #9ad0ff; text-decoration: none; transition: color 0.3s; }
+        .footer-content a:hover { color: #ffffff; text-decoration: underline; }
+        @media (max-width: 768px) {
+            header { padding: 15px 20px; flex-direction: column; gap: 15px; }
+            nav ul { gap: 15px; flex-wrap: wrap; justify-content: center; }
+            nav ul li a { font-size: 12px; padding: 8px 0; }
+            .contact-section { padding: 50px 20px; }
+            .contact-header h2 { font-size: 28px; letter-spacing: 3px; }
+            .recruitment-detail-content { padding: 30px 20px; }
+            .recruitment-detail-content .main-title { font-size: 20px; }
+            .recruitment-detail-content h3 { font-size: 18px; }
+            .recruitment-detail-content p { font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><img src="images/logo.png" alt="UES Logo" class="logo-img"></div>
+        <nav>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="news-list.html">新闻</a></li>
+                <li><a href="research-test.html">研究</a></li>
+                <li><a href="members-researchers.html">成员</a></li>
+                <li><a href="publications-journals.html">成果</a></li>
+                <li><a href="gallery-research-images.html">媒体库</a></li>
+                <li><a href="contact-recruitment.html" style="color: #0066cc;">联系我们</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="banner-container">
+        <div class="banner-slider">
+            <div class="banner-slide active"><video src="images/video11.mp4" muted autoplay playsinline></video></div>
+        </div>
+    </div>
+
+    <section class="contact-section">
+        <div class="contact-header"><h2>联系我们</h2></div>
+        <div class="recruitment-detail">
+            <div class="recruitment-detail-content">
+                    <div class="main-title">关于研究生招收的若干朴素想法</div>
+                                        
+                    <h3>一、研究基础与方向</h3>
+                    <p>1. 自动化，含机器人、微流控等</p>
+                    <p>2. 测量，含光测、电测、多模态等</p>
+                    <p>3. 科学仪器</p>
+                    <p>4. 算法，含深度学习、大模型等</p>
+                    <p>5. 仿真，含分子动力学等</p>
+                    
+                    <h3>二、招收方式</h3>
+                    <p>1. 交大：校本部直博、普博、硕博、学硕、专硕</p>
+                    <p>2. 交大：专项、联培，务必提前确认</p>
+                    <p>3. 宁大：校本部学硕、专硕</p>
+                    <p>4. 广实：可推荐直博</p>
+                    
+                    <h3>三、培养方式</h3>
+                    <p>1. 要求：1）做事情认真负责；2）热爱团队</p>
+                    <p>2. 风格：1）高效；2）open</p>
+                    <p>3. 鼓励：1）学科交叉；2）访问交流；3）提前毕业</p>
+                    <p>4. 建议：1）告诉导师真实需求，通过讨论来明确方案，认真负责地执行方案，遇到问题及时与导师讨论来调整方案；2）我们是有机会把学术与产业一起做好的，即面向产业开展科研的过程中，沿途下高水平的蛋</p>
+                    
+                    <p class="contact-info"><strong>联系人：</strong>胡松涛<br><strong>邮箱：</strong>hsttaotao@sjtu.edu.cn</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>© 2026 UES Group | All Rights Reserved</p>
+            <p><a href="https://beian.miit.gov.cn/" target="_blank">沪交ICP备20250301</a></p>
+        </div>
+    </footer>
+
+    <script>
+        const video = document.querySelector('.banner-slide video');
+        if (video) {
+            video.addEventListener('ended', () => { video.currentTime = 0; video.play(); });
+            video.play().catch(e => console.log(e));
+        }
+    </script>
+</body>
+</html>
