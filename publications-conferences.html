@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>成果 - 会议论文</title>
+    <title>产品</title>
     <style>
         /* 公共样式 */
         * {
@@ -305,132 +305,12 @@
         }
     </style>
     <link rel="stylesheet" href="mobile-responsive.css">
+    <meta http-equiv="refresh" content="0; url=publications-products.html">
 </head>
 
 <body>
-    <!-- 头部 -->
-    <header>
-        <div class="logo">
-            <img src="images/logo.png" alt="UES Logo" class="logo-img">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">首页</a></li>
-                <li><a href="news-list.html">新闻</a></li>
-                <li><a href="research-test.html">研究</a></li>
-                <li><a href="members-researchers.html">成员</a></li>
-                <li><a href="publications-journals.html" style="color: #0066cc;">成果</a></li>
-                <li><a href="gallery-research-images.html">媒体库</a></li>
-                <li><a href="contact-us.html">联系我们</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- 轮播图区域 -->
-    <div class="banner-container">
-        <div class="banner-slider">
-            <div class="banner-slide active">
-                <video src="images/video11.mp4" muted autoplay playsinline></video>
-            </div>
-        </div>
-    </div>
-
-    <!-- 成果列表区域 -->
-    <section class="publications-list-section">
-        <div class="publications-list-header">
-            <h2>成果</h2>
-        </div>
-
-        <!-- Tab 导航 -->
-        <div class="tab-navigation">
-            <a href="publications-journals.html" class="tab-btn">期刊论文</a>
-            <a href="publications-conferences.html" class="tab-btn active">会议论文</a>
-            <a href="publications-products.html" class="tab-btn">产品</a>
-        </div>
-
-        <!-- Tab 内容: 会议论文 -->
-        <div class="tab-content-inner">
-            <div class="publications-list">
-                <!-- 会议论文条目示例 -->
-                <div class="publication-item">
-                    <div class="publication-meta">
-                        <span class="publication-journal">International Conference on Robotics, Automation and Intelligent Control</span>
-                        <span class="publication-year">2025</span>
-                    </div>
-                    <h3>Experimental system for full-lifecycle performance evaluation of elevator brakes</h3>
-                </div>
-                <div class="publication-item">
-                    <div class="publication-meta">
-                        <span class="publication-journal">International Conference on Mechanical Automation and Engineering Applications</span>
-                        <span class="publication-year">2025</span>
-                    </div>
-                    <h3>Automated colony-picking instrument based on AI-driven image identification</h3>
-                </div>
-                <div class="publication-item">
-                    <div class="publication-meta">
-                        <span class="publication-journal">International Conference on Robotics, Automation and Intelligent Control</span>
-                        <span class="publication-year">2024</span>
-                    </div>
-                    <h3>A numerical modeling and simulation approach for the dynamic analysis of non-contacting mechanical face seals</h3>
-                </div>
-                <div class="publication-item">
-                    <div class="publication-meta">
-                        <span class="publication-journal">Global Reliability and Prognostics and Health Management Conference</span>
-                        <span class="publication-year">2023</span>
-                    </div>
-                    <h3>Unsupervised domain adaptation fault diagnosis method using weight-based mask network</h3>
-                </div>
-                <div class="publication-item">
-                    <div class="publication-meta">
-                        <span class="publication-journal">IOP Conference Series: Materials Science and Engineering</span>
-                        <span class="publication-year">2019</span>
-                    </div>
-                    <h3>A bi-Gaussian acoustic emission model for sliding friction</h3>
-                </div>
-                <div class="publication-item">
-                    <div class="publication-meta">
-                        <span class="publication-journal">Annual International Conference on CYBER Technology in Automation, Control, and Intelligent Systems</span>
-                        <span class="publication-year">2019</span>
-                    </div>
-                    <h3>Adaptive analysis for acoustic emissions generated from a gas face seal</h3>
-                </div>
-                <div class="publication-item">
-                    <div class="publication-meta">
-                        <span class="publication-journal">Society of Tribologists and Lubrication Engineers Annual Meeting and Exhibition</span>
-                        <span class="publication-year">2015</span>
-                    </div>
-                    <h3>Face contact analysis of spiral groove gas face seals using fractal model</h3>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 网页底部 -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <p>© 2026 UES Group | All Rights Reserved</p>
-            <p>
-                <a href="https://beian.miit.gov.cn/" target="_blank">
-                    沪交ICP备20250301
-                </a>
-            </p>
-        </div>
-    </footer>
-
-    <script>
-        // Banner 逻辑
-        const bannerContainer = document.querySelector('.banner-container');
-        bannerContainer.classList.add("small");
-
-        // 视频自动播放逻辑
-        const video = document.querySelector('.banner-slide video');
-        if (video) {
-            video.addEventListener('ended', () => {
-                video.currentTime = 0;
-                video.play();
-            });
-            video.play().catch(e => console.log(e));
-        }
-    </script>
+    <p style="font-family: Arial, sans-serif; padding: 24px;">
+        正在跳转至<a href="publications-products.html">产品</a>页面。
+    </p>
 </body>
 </html>
