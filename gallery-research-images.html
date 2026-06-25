@@ -214,7 +214,17 @@
             transform: scale(1.05);
         }
 
-        /* 底部样式 */
+        
+        .gallery-item img.fit-contain {
+            object-fit: contain;
+            background-color: #ffffff;
+        }
+
+        .gallery-item:hover img.fit-contain {
+            transform: none;
+        }
+
+/* 底部样式 */
         .site-footer {
             background-color: #1e1e1e;
             color: #ccc;
@@ -316,6 +326,9 @@
         <!-- Tab 内容: 科研图库 -->
         <div class="tab-content-inner">
             <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/achievement/图9.png" alt="科研图片41" class="fit-contain">
+                </div>
                 <div class="gallery-item">
                     <img src="images/gallery/research39.jpg" alt="科研图片39">
                 </div>
