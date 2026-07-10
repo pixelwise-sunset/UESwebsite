@@ -162,15 +162,13 @@
         .banner-container {
             position: relative;
             width: 100%;
-            height: 70vh; /* 初始高 */
+            height: 300px;
             overflow: hidden;
-            transition: height 0.8s ease; /* 动画过渡 */
         }
 
         .banner-container.small {
-            height: 300px; /* 缩小后高度 */
+            height: 300px;
         }
-
 
         .banner-slider {
             position: relative;
@@ -384,7 +382,7 @@
             }
 
             .banner-container {
-                height: 400px;
+                height: 240px;
             }
 
             .banner-text h1 {
@@ -932,20 +930,6 @@
         // 初始加载
         window.addEventListener('load', handleHash);
 
-
-
-        // === 鼠标悬停控制 ===
-        // const bannerContainer = document.querySelector('.banner-container'); // Already defined above
-        document.addEventListener("click", function(event) {
-            if (!bannerContainer.contains(event.target)) {
-                bannerContainer.classList.add("small");
-            }
-        });
-
-        document.querySelector(".banner-container").addEventListener("click", function(event) {
-            event.stopPropagation(); 
-            this.classList.remove("small");
-        });
     </script>
 
     <!-- <footer class="page-footer">
@@ -995,4 +979,3 @@
 
 </body>
 </html>
-
