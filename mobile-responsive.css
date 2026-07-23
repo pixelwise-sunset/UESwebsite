@@ -259,6 +259,10 @@
         overflow-wrap: anywhere;
     }
 
+    .news-card-content h3.news-title-single-line {
+        white-space: normal !important;
+    }
+
     .news-item,
     .publication-item,
     .recruitment-item {
