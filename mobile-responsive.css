@@ -6,6 +6,20 @@ header .logo-img {
     object-position: center;
 }
 
+.thumbnails.gel-cell-thumbnails {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 6px;
+    overflow: visible;
+}
+
+.thumbnails.gel-cell-thumbnails img {
+    width: 100% !important;
+    height: auto !important;
+    min-width: 0;
+    aspect-ratio: 1;
+}
+
 .banner-container::after {
     content: "开发适合AI时代的实验数据生产工具";
     position: absolute;
