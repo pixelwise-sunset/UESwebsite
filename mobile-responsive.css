@@ -1,4 +1,11 @@
 /* Shared layout refinements used across the static pages. */
+header .logo-img {
+    width: 280px;
+    height: 100px;
+    object-fit: cover;
+    object-position: center;
+}
+
 .banner-container::after {
     content: "开发适合AI时代的实验数据生产工具";
     position: absolute;
@@ -55,9 +62,11 @@
     }
 
     header .logo-img {
-        height: 50px !important;
-        max-width: min(70vw, 260px);
-        object-fit: contain;
+        width: 230px !important;
+        height: 82px !important;
+        max-width: 80vw;
+        object-fit: cover;
+        object-position: center;
     }
 
     header .logo-text {
